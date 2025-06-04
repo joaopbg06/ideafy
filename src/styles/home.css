@@ -25,21 +25,10 @@ img{
     justify-content: space-between;
 }
 
-.paginas{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 20vw;
-}
-
-.login{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 8vw;
-}
 
 .navItem{
     text-decoration: none;
-    font-family: '';
+    color: #8C8C8C;
+    font-size: 20px;
+    margin: 0 15px;
 }
