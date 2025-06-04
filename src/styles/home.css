@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+.main{
+    padding: 0 150px;
+    background-color: #FAF5F1;
+}
+
+.imagemLogo{
+    width: 150px;
+}
+
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.paginas{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 20vw;
+}
+
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 8vw;
+}
+
+.navItem{
+    text-decoration: none;
+    font-family: '';
+}
