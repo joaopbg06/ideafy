@@ -15,7 +15,7 @@ img{
     src: url('../assets/font/Inter/static/Inter_18pt-Bold.ttf');
 }
 
-.root{
+.header{
     padding: 0 150px;
     background-color: #FAF5F1;
 }

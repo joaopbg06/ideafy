@@ -5,7 +5,6 @@ import Sobre from "./pages/sobre.js";
 import Login from "./pages/login.js";
 
 import logo from './assets/images/ideiafy-logonome.png';
-import './styles/app.css';
 
 export default function AppRoutes() {
     const location = useLocation();
@@ -19,7 +18,7 @@ export default function AppRoutes() {
         <>
             {/* Renderiza o layout principal apenas se não estiver em uma rota sem layout */}
             {!isNoLayout && (
-                <div className="root">
+                <div className="header">
                     <div className="nav">
                         <img src={logo} className="imagemLogo" alt="Logo" />
                         <div className="paginas">

@@ -1,6 +1,5 @@
 import React from "react";
 
-import '../styles/login.css'
 import logoIcon from '../assets/images/ideiafy-logo.png'
 import luaIcon from '../assets/icons/lua.svg'
 import imgCard from '../assets/images/boneco-ideia.png'
@@ -8,7 +7,7 @@ import imgCard from '../assets/images/boneco-ideia.png'
 
 export default function Login() {
     return (
-        <div className="root">
+        <div id="login">
 
             <div className="mainLeft">
 
