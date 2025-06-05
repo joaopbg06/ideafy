@@ -1,0 +1,135 @@
+/* Padrao */
+div .root{
+    padding: 0 ;
+    display: flex;
+    justify-content: space-around;
+}
+.titulo{
+    color: #F17B3C;
+    font-size: 40px;
+    font-family: 'interBold';
+}
+.subtitulo{
+    font-size: 20px;
+    font-family: 'interBold';
+}
+.texto{
+    font-size: 14px;
+    font-family: 'interBold';
+}
+
+
+/* Parte da esquerda */
+.mainLeft{
+    width: 45vw;
+    max-height: 100vh;
+    background-color: #FAF5F1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Parte de cima com a logo e icone */
+.icons{
+    width: 39vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px 0 0;
+}
+.luaIcon{
+    width: 40px;
+}
+.logoIcon{
+    width: 90px;
+}
+
+/* Card */
+.card{
+    width: 60%;
+    margin: auto;
+}
+.textoCard{
+    color: #777777;
+}
+.imgCard{
+    margin-top: -50px;
+}
+
+/* Parte da direita */
+
+.mainRight{
+    width: 60vw;
+    height: 100vh;
+    background-color: #2F2F2F;
+    border-radius: 10px 0 0 10px;
+    box-shadow: -4px 0 10px #2F2F2F;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* formulario para logar */
+
+.textoLogin, .subtituloLogin, .input::placeholder{
+    color: #fff;
+}
+
+.input{
+    outline-style: none;
+    color: #fff;
+    background-color: #F17B3C;
+    border-radius: 10px;
+    padding: 15px 25px;
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+.button{
+    background-color: #fff;
+    color: #F17B3C;
+    padding: 10px 50px;
+    border-radius: 10px;
+    margin-top: 16px;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.textoLogin{
+    margin: 5px 50px 20px 10px;
+}
+.tituloLogin{
+    margin:0px 0px 0px 10px;
+}
+.subtituloLogin{
+    text-align: center;
+    margin: 30px 0;
+}
+.separacao{
+    display: flex;
+    align-items: center;
+    width: 75%;
+}
+
+.tituloSeparacao.titulo{
+    font-size: 24px;
+    margin: 0 10px;
+}
+
+.linha{
+    height: 2px;
+    width: 100%;
+    background-color: #fff;
+}

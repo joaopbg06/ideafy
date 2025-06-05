@@ -10,7 +10,12 @@ img{
     height: auto;
 }
 
-.main{
+@font-face {
+    font-family: 'interBold';
+    src: url('../assets/font/Inter/static/Inter_18pt-Bold.ttf');
+}
+
+.root{
     padding: 0 150px;
     background-color: #FAF5F1;
 }
