@@ -18,16 +18,39 @@
     font-family: 'interBold';
 }
 
+/* Temas */
+
+.claro-fundo-bege{
+    background-color: #FAF5F1;
+}
+.claro-fundo-branco{
+    background-color: #fff;
+}
+
+.escuro-fundo-cinza{
+    background-color: #2F2F2F;
+}
+.escuro-fundo-preto{
+    background-color: #000;
+}
+
+.claro-color{
+    color: #fff;
+}
+.escuro-color{
+    color: #000;
+}
+
 
 /* Parte da esquerda */
 .mainLeft{
     width: 45vw;
     max-height: 100vh;
-    background-color: #FAF5F1;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 
 /* Parte de cima com a logo e icone */
 .icons{
@@ -39,6 +62,7 @@
 }
 .luaIcon{
     width: 40px;
+    cursor: pointer;
 }
 .logoIcon{
     width: 90px;
@@ -49,10 +73,8 @@
     width: 60%;
     margin: auto;
 }
-.textoCard{
-    color: #777777;
-}
-.imgCard{
+
+#imgCard1{
     margin-top: -50px;
 }
 
@@ -61,7 +83,6 @@
 .mainRight{
     width: 60vw;
     height: 100vh;
-    background-color: #2F2F2F;
     border-radius: 10px 0 0 10px;
     box-shadow: -4px 0 10px #2F2F2F;
     display: flex;
@@ -70,9 +91,11 @@
     justify-content: center;
 }
 
+
+
 /* formulario para logar */
 
-.textoLogin, .subtituloLogin, .input::placeholder{
+.input::placeholder{
     color: #fff;
 }
 
@@ -87,11 +110,11 @@
 }
 
 .button{
-    background-color: #fff;
     color: #F17B3C;
     padding: 10px 50px;
     border-radius: 10px;
     margin-top: 16px;
+    cursor: pointer;
 }
 
 .login{
@@ -131,5 +154,32 @@
 .linha{
     height: 2px;
     width: 100%;
-    background-color: #fff;
+
 }
+.outros{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    margin-top: 50px;
+}
+.caixa{
+    width: 250px;
+    height: 50px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
