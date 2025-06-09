@@ -150,9 +150,18 @@ export default function Login() {
                 </div>
 
                 <div className="outros">
-                    <div className={`caixa ${tema === "escuro" ? "escuro-fundo-cinza" : "claro-fundo-branco"}`}></div>
-                    <div className={`caixa ${tema === "escuro" ? "escuro-fundo-cinza" : "claro-fundo-branco"}`}></div>
-                    <div className={`caixa ${tema === "escuro" ? "escuro-fundo-cinza" : "claro-fundo-branco"}`}></div>
+                    <div className={`caixa ${tema === "escuro" ? "escuro-fundo-cinza" : "claro-fundo-branco"}`}>
+                        <img src={images.githubIcon} className='loginIcons githubIcon' />
+                        <p className={` subtitulo ${tema === "escuro" ? "claro-color" : "escuro-color"}`}>Login com Github</p>
+                    </div>
+                    <div className={`caixa ${tema === "escuro" ? "escuro-fundo-cinza" : "claro-fundo-branco"}`}>
+                        <img src={images.googleIcon} className='loginIcons' />
+                        <p className={` subtitulo ${tema === "escuro" ? "claro-color" : "escuro-color"}`}>Login com Google</p>
+                    </div>
+                    <div className={`caixa ${tema === "escuro" ? "escuro-fundo-cinza" : "claro-fundo-branco"}`}>
+                        <img src={images.linkedinIcon} className='loginIcons' />
+                        <p className={` subtitulo ${tema === "escuro" ? "claro-color" : "escuro-color"}`}>Login com Linkedin</p>
+                    </div>
                 </div>
             </div>
         </div>

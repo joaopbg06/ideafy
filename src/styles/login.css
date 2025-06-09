@@ -3,6 +3,7 @@
     padding: 0;
     display: flex;
     justify-content: space-around;
+
 }
 
 .titulo {
@@ -25,30 +26,37 @@
 
 .claro-fundo-bege {
     background-color: #FAF5F1;
+    transition: all 0.3s;
 }
 
 .claro-fundo-branco {
     background-color: #fff;
+    transition: all 0.3s;
 }
 
 .escuro-fundo-cinza {
     background-color: #2F2F2F;
+    transition: all 0.3s;
 }
 
 .escuro-fundo-preto {
     background-color: #000;
+    transition: all 0.3s;
 }
 
 .claro-color {
     color: #fff;
+    transition: all 0.3s;
 }
 
 .escuro-color {
     color: #000;
+    transition: all 0.3s;
 }
 
 .laranja-color {
     color: #F17B3C;
+    transition: all 0.3s;
 }
 
 /* Parte da esquerda */
@@ -341,4 +349,42 @@
     height: 50px;
     border-radius: 10px;
     margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
+
+.loginIcons {
+    width: 24px;
+    margin: 0 15px 0 0;
+}
+
+.githubIcon {
+    width: 30px;
+}
+
+/* Responcividade */
+
+@media (max-width: 1574px) {
+
+    .boxCard {
+        width: 350px;
+    }
+
+    #imgCard2 {
+        height: 360px;
+    }
+
+    .conteudoCard {
+        margin: 10px 0;
+        padding: 0 25px 0 0;
+    }
+
+    .outros {
+
+        width: 70%;
+
+    }
+}
+
