@@ -11,6 +11,11 @@ img{
 }
 
 @font-face {
+    font-family: 'interSemiBold';
+    src: url('../assets/font/Inter/static/Inter_18pt-SemiBold.ttf');
+}
+
+@font-face {
     font-family: 'interBold';
     src: url('../assets/font/Inter/static/Inter_18pt-Bold.ttf');
 }

@@ -1,49 +1,58 @@
 /* Padrao */
-#login{
-    padding: 0 ;
+#login {
+    padding: 0;
     display: flex;
     justify-content: space-around;
 }
-.titulo{
+
+.titulo {
     color: #F17B3C;
     font-size: 40px;
     font-family: 'interBold';
 }
-.subtitulo{
+
+.subtitulo {
     font-size: 20px;
     font-family: 'interBold';
 }
-.texto{
+
+.texto {
     font-size: 14px;
     font-family: 'interBold';
 }
 
 /* Temas */
 
-.claro-fundo-bege{
+.claro-fundo-bege {
     background-color: #FAF5F1;
 }
-.claro-fundo-branco{
+
+.claro-fundo-branco {
     background-color: #fff;
 }
 
-.escuro-fundo-cinza{
+.escuro-fundo-cinza {
     background-color: #2F2F2F;
 }
-.escuro-fundo-preto{
+
+.escuro-fundo-preto {
     background-color: #000;
 }
 
-.claro-color{
+.claro-color {
     color: #fff;
 }
-.escuro-color{
+
+.escuro-color {
     color: #000;
 }
 
+.laranja-color {
+    color: #F17B3C;
+}
 
 /* Parte da esquerda */
-.mainLeft{
+.mainLeft {
     width: 45vw;
     max-height: 100vh;
     display: flex;
@@ -53,34 +62,189 @@
 
 
 /* Parte de cima com a logo e icone */
-.icons{
+.icons {
     width: 39vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 30px 0 0;
 }
-.luaIcon{
+
+.luaIcon {
     width: 40px;
     cursor: pointer;
 }
-.logoIcon{
+
+.logoIcon {
     width: 90px;
 }
 
 /* Card */
-.card{
+
+.card-container {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    margin: auto;
+}
+
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    /* Posição original */
+}
+
+.fade-out {
+    opacity: 0;
+    transform: translateY(10px);
+    /* Move um pouco para baixo antes de sumir */
+}
+
+
+
+/* Card1 */
+
+.card1 {
     width: 60%;
     margin: auto;
 }
 
-#imgCard1{
+#imgCard1 {
     margin-top: -50px;
 }
 
+/* Card2 */
+
+.card2 {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.headerCard {
+    width: 80%;
+    margin-bottom: 50px;
+}
+
+.tituloCard {
+    font-family: 'interBold';
+    font-size: 16px;
+}
+
+.nomeCard {
+    font-family: 'interBold';
+    font-size: 12px;
+}
+
+.descricaoCard {
+    font-family: 'interSemiBold';
+    font-size: 8px;
+}
+
+.textCard {
+    font-family: 'interSemiBold';
+    font-size: 12px;
+}
+
+.boxCard {
+    position: relative;
+    width: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#imgCard2 {
+    height: 400px;
+    object-fit: cover;
+    z-index: -1;
+
+}
+
+.iconsCard {
+    width: 15px;
+    margin: 0 5px;
+}
+
+.divCard {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    padding: 15px;
+    box-sizing: border-box;
+    z-index: 1;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.corFundo-card1 {
+    background-color: #C7A378;
+}
+
+.corFundo-card2 {
+    background-color: #334969;
+}
+
+.buttonContribuir {
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.buttonsCard {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.conteudoCard {
+    margin: 20px 0;
+    padding: 0 100px 0 0;
+    display: flex;
+    align-items: center;
+}
+
+#imgCard3 {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: 15px 15px 15px 0;
+
+}
+
+.boxCards {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55vh;
+    width: 35vw;
+}
+
+#card1,
+#card2 {
+    position: absolute;
+}
+
+#card1 {
+    z-index: 2;
+    top: 0;
+    left: 0px;
+
+}
+
+#card2 {
+    z-index: 1;
+    bottom: 45px;
+    right: 0px;
+}
+
+
 /* Parte da direita */
 
-.mainRight{
+.mainRight {
     width: 60vw;
     height: 100vh;
     border-radius: 10px 0 0 10px;
@@ -95,11 +259,11 @@
 
 /* formulario para logar */
 
-.input::placeholder{
+.input::placeholder {
     color: #fff;
 }
 
-.input{
+.input {
     outline-style: none;
     color: #fff;
     background-color: #F17B3C;
@@ -109,54 +273,61 @@
     width: 100%;
 }
 
-.button{
+.button {
     color: #F17B3C;
     padding: 10px 50px;
     border-radius: 10px;
-    margin-top: 16px;
     cursor: pointer;
 }
 
-.login{
+.buttonLogin {
+    margin-top: 16px;
+}
+
+.login {
     display: flex;
     flex-direction: column;
     width: 55%;
 }
 
-.formulario{
+.formulario {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
 }
 
-.textoLogin{
+.textoLogin {
     margin: 5px 50px 20px 10px;
 }
-.tituloLogin{
-    margin:0px 0px 0px 10px;
+
+.tituloLogin {
+    margin: 0px 0px 0px 10px;
 }
-.subtituloLogin{
+
+.subtituloLogin {
     text-align: center;
     margin: 30px 0;
 }
-.separacao{
+
+.separacao {
     display: flex;
     align-items: center;
     width: 75%;
 }
 
-.tituloSeparacao.titulo{
+.tituloSeparacao.titulo {
     font-size: 24px;
     margin: 0 10px;
 }
 
-.linha{
+.linha {
     height: 2px;
     width: 100%;
 
 }
-.outros{
+
+.outros {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -164,22 +335,10 @@
     width: 60%;
     margin-top: 50px;
 }
-.caixa{
+
+.caixa {
     width: 250px;
     height: 50px;
     border-radius: 10px;
     margin: 10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
