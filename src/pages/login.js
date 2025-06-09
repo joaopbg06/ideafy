@@ -1,15 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import logoIcon from '../assets/images/ideiafy-logo.png';
-import luaIcon from '../assets/icons/lua.svg';
-import solIcon from '../assets/icons/sol.svg';
-import coracaoIcon from '../assets/icons/coracao.svg';
-import comentarIcon from '../assets/icons/comentar.svg';
+import images from "../assets/images";
+import "../styles/login.css";
 
-import imgCard from '../assets/images/boneco-ideia.png';
-import imgBoxCard1 from '../assets/images/Lucas-Banner.png'
-import imgBoxCard1perfil from '../assets/images/Lucas-perfil.png'
-import imgBoxCard2 from '../assets/images/Debora-banner.png'
 
 export function Cards({ tema, slide }) {
 
@@ -20,7 +13,7 @@ export function Cards({ tema, slide }) {
                 <p className={`texto ${tema === 'escuro' ? 'claro-color' : 'escuro-color'}`}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
-                <img id='imgCard1' className="imgCard" src={imgCard} alt="Card" />
+                <img id='imgCard1' className="imgCard" src={images.imgCard} alt="Card" />
             </div>
         )
     }
@@ -36,11 +29,11 @@ export function Cards({ tema, slide }) {
 
                 <div className="boxCards">
                     <div id="card1" class="boxCard">
-                        <img id="imgCard2" class="imgCard" src={imgBoxCard1} alt="Card" />
+                        <img id="imgCard2" class="imgCard" src={images.imgBoxCard1} alt="Card" />
                         <div class="divCard corFundo-card1">
                             <h1 className="tituloCard escuro-color">Rede Mentor</h1>
                             <div className="conteudoCard">
-                                <img id="imgCard3" class="imgCard" src={imgBoxCard1perfil} alt="Card" />
+                                <img id="imgCard3" class="imgCard" src={images.imgBoxCard1perfil} alt="Card" />
                                 <div >
                                     <p className="nomeCard escuro-color">Lucas Andrade</p>
                                     <p className="descricaoCard ">Criei a ideia da Rede Mentor, uma plataforma que conecta jovens a mentores experientes para trocar orientações de carreira de forma prática e acessível. Agora estou buscando pessoas interessadas em contribuir para tirar esse projeto do papel e fazê-lo crescer juntos.
@@ -50,18 +43,18 @@ export function Cards({ tema, slide }) {
                             <div className="buttonsCard">
                                 <button class="buttonContribuir button textCard">Contribuir</button>
                                 <div>
-                                    <img className="iconsCard" src={coracaoIcon} />
-                                    <img className="iconsCard" src={comentarIcon} />
+                                    <img className="iconsCard" src={images.coracaoIcon} />
+                                    <img className="iconsCard" src={images.comentarIcon} />
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div id="card2" class="boxCard">
-                        <img id="imgCard2" class="imgCard" src={imgBoxCard2} alt="Card" />
+                        <img id="imgCard2" class="imgCard" src={images.imgBoxCard2} alt="Card" />
                         <div class="divCard corFundo-card2">
                             <h1 className="tituloCard laranja-color">EcoFusion Power</h1>
                             <div className="conteudoCard">
-                                <img id="imgCard3" class="imgCard" src={imgBoxCard2} alt="Card" />
+                                <img id="imgCard3" class="imgCard" src={images.imgBoxCard2} alt="Card" />
                                 <div >
                                     <p className="nomeCard laranja-color">Debora Mendes</p>
                                     <p className="descricaoCard ">um gerador híbrido portátil que combina energia solar e eólica em um só dispositivo. Ele funciona em qualquer lugar, ideal para casas, áreas remotas ou emergências.
@@ -72,8 +65,8 @@ export function Cards({ tema, slide }) {
                             <div className="buttonsCard">
                                 <button class="buttonContribuir button textCard">Contribuir</button>
                                 <div>
-                                    <img className="iconsCard" src={coracaoIcon} />
-                                    <img className="iconsCard" src={comentarIcon} />
+                                    <img className="iconsCard" src={images.coracaoIcon} />
+                                    <img className="iconsCard" src={images.comentarIcon} />
                                 </div>
                             </div>
                         </div>
@@ -90,14 +83,14 @@ export function Cards({ tema, slide }) {
 
 export default function Login() {
 
-    const [iconSrc, setIconSrc] = useState(luaIcon);
+    const [iconSrc, setIconSrc] = useState(images.luaIcon);
     const [tema, setTema] = useState("claro");
     const [slide, setSlide] = useState("Login");
     const [fade, setFade] = useState(false);
     const TempoCard = 5000
 
     const toggleIcon = () => {
-        setIconSrc(prev => (prev === luaIcon ? solIcon : luaIcon));
+        setIconSrc(prev => (prev === images.luaIcon ? images.solIcon : images.luaIcon));
         setTema((prev) => (prev === "escuro" ? "claro" : "escuro"));
     };
 
@@ -123,7 +116,7 @@ export default function Login() {
         <div id="login" className={tema === 'escuro' ? 'escuro-fundo-cinza' : 'claro-fundo-bege'}>
             <div className='mainLeft'>
                 <div className="icons">
-                    <img className="logoIcon icon" src={logoIcon} alt="Logo" />
+                    <img className="logoIcon icon" src={images.logoIcon} alt="Logo" />
 
                     <img className="luaIcon icon" src={iconSrc} alt="Lua" onClick={toggleIcon} />
                 </div>
