@@ -118,7 +118,7 @@ export default function Login() {
                 <div className="icons">
                     <img className="logoIcon icon" src={images.logoIcon} alt="Logo" />
 
-                    <img className="luaIcon icon" src={iconSrc} alt="Lua" onClick={toggleIcon} />
+                    <img className={`temaIcon icon `} src={iconSrc} alt="Lua" onClick={toggleIcon} />
                 </div>
 
                 <div className={`card-container ${fade ? "fade-out" : "fade-in"}`}>
@@ -136,7 +136,7 @@ export default function Login() {
                     <form className="formulario">
                         <input placeholder="Email:" className="inputEmail input subtitulo" />
                         <input placeholder="Senha:" className="inputSenha input subtitulo" />
-                        <button type="submit" className={`buttonLogin button subtitulo ${tema === "escuro" ? "escuro-fundo-cinza" : "claro-fundo-branco"}`}>Entrar</button>
+                        <button type="submit" className={`buttonLogin button subtitulo ${tema === "escuro" ? "escuro-fundo-cinza hover-escuro-button" : "claro-fundo-branco hover-claro-button"}`}>Entrar</button>
                     </form>
 
                     <h2 className={`subtituloLogin subtitulo ${tema === "escuro" ? "escuro-color" : "claro-color"}`}>Esqueceu a senha?</h2>
@@ -150,17 +150,17 @@ export default function Login() {
                 </div>
 
                 <div className="outros">
-                    <div className={`caixa ${tema === "escuro" ? "escuro-fundo-cinza" : "claro-fundo-branco"}`}>
+                    <div className={`caixa ${tema === "escuro" ? "escuro-fundo-cinza escuro-hover-caixa claro-color" : "claro-fundo-branco claro-hover-caixa escuro-color"}`}>
                         <img src={images.githubIcon} className='loginIcons githubIcon' />
-                        <p className={` subtitulo ${tema === "escuro" ? "claro-color" : "escuro-color"}`}>Login com Github</p>
+                        <p className={` subtitulo `}>Login com Github</p>
                     </div>
-                    <div className={`caixa ${tema === "escuro" ? "escuro-fundo-cinza" : "claro-fundo-branco"}`}>
+                    <div className={`caixa ${tema === "escuro" ? "escuro-fundo-cinza escuro-hover-caixa claro-color" : "claro-fundo-branco claro-hover-caixa escuro-color"}`}>
                         <img src={images.googleIcon} className='loginIcons' />
-                        <p className={` subtitulo ${tema === "escuro" ? "claro-color" : "escuro-color"}`}>Login com Google</p>
+                        <p className={` subtitulo `}>Login com Google</p>
                     </div>
-                    <div className={`caixa ${tema === "escuro" ? "escuro-fundo-cinza" : "claro-fundo-branco"}`}>
+                    <div className={`caixa ${tema === "escuro" ? "escuro-fundo-cinza escuro-hover-caixa claro-color" : "claro-fundo-branco claro-hover-caixa escuro-color"}`}>
                         <img src={images.linkedinIcon} className='loginIcons' />
-                        <p className={` subtitulo ${tema === "escuro" ? "claro-color" : "escuro-color"}`}>Login com Linkedin</p>
+                        <p className={` subtitulo `}>Login com Linkedin</p>
                     </div>
                 </div>
             </div>

@@ -22,6 +22,7 @@
     font-family: 'interBold';
 }
 
+
 /* Temas */
 
 .claro-fundo-bege {
@@ -44,7 +45,7 @@
     transition: all 0.3s;
 }
 
-.claro-color {
+.claro-color, .input::placeholder {
     color: #fff;
     transition: all 0.3s;
 }
@@ -78,10 +79,16 @@
     margin: 30px 0 0;
 }
 
-.luaIcon {
+.temaIcon {
     width: 40px;
     cursor: pointer;
+    transition: transform 0.3s ease; /* Corrigido */
 }
+
+.temaIcon:hover {
+    transform: scale(1.10);
+}
+
 
 .logoIcon {
     width: 90px;
@@ -267,16 +274,13 @@
 
 /* formulario para logar */
 
-.input::placeholder {
-    color: #fff;
-}
 
 .input {
     outline-style: none;
     color: #fff;
     background-color: #F17B3C;
     border-radius: 10px;
-    padding: 15px 25px;
+    padding: 3% 25px;
     margin-bottom: 16px;
     width: 100%;
 }
@@ -286,6 +290,22 @@
     padding: 10px 50px;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.button:active, .caixa:active {
+    transform: scale(0.90);
+
+}
+
+.hover-escuro-button:hover {
+    background-color: #393232;
+    color: #FF8A50;
+
+}
+
+.hover-claro-button:hover {
+    background-color: #FFE5D1;
+    color: #D6642D;
 }
 
 .buttonLogin {
@@ -316,6 +336,12 @@
 .subtituloLogin {
     text-align: center;
     margin: 30px 0;
+    cursor: pointer;
+}
+
+.subtituloLogin:hover {
+    text-decoration: underline;
+
 }
 
 .separacao {
@@ -324,7 +350,7 @@
     width: 75%;
 }
 
-.tituloSeparacao.titulo {
+.tituloSeparacao {
     font-size: 24px;
     margin: 0 10px;
 }
@@ -341,11 +367,11 @@
     align-items: center;
     justify-content: center;
     width: 60%;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .caixa {
-    width: 250px;
+    width: 45%;
     height: 50px;
     border-radius: 10px;
     margin: 10px;
@@ -353,6 +379,14 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+
+.claro-hover-caixa:hover {
+    background-color: #ffeadb;
+}
+
+.escuro-hover-caixa:hover {
+    background-color: #393232;
 }
 
 .loginIcons {
@@ -382,9 +416,15 @@
     }
 
     .outros {
-
         width: 70%;
+    }
+
+    #card1 {
+        top: 45px;
+        ;
+        left: 0px;
 
     }
-}
 
+
+}
