@@ -1,0 +1,94 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+/* Fontes */
+@font-face {
+    font-family: 'interSemiBold';
+    src: url('../assets/font/Inter/static/Inter_18pt-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'interBold';
+    src: url('../assets/font/Inter/static/Inter_18pt-Bold.ttf');
+}
+
+/* Texto */
+
+.titulo {
+    color: #F17B3C;
+    font-size: 40px;
+    font-family: 'interBold';
+}
+
+.subtitulo {
+    font-size: 20px;
+    font-family: 'interBold';
+}
+
+.texto {
+    font-size: 14px;
+    font-family: 'interBold';
+}
+
+
+/* Temas  */
+.claro-fundo-bege {
+    background-color: #FAF5F1;
+    transition: all 0.3s;
+}
+
+.claro-fundo-branco {
+    background-color: #fff;
+    transition: all 0.3s;
+}
+
+.escuro-fundo-cinza {
+    background-color: #2F2F2F;
+    transition: all 0.3s;
+}
+
+.escuro-fundo-preto {
+    background-color: #000;
+    transition: all 0.3s;
+}
+
+.claro-color,
+.input::placeholder {
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.escuro-color {
+    color: #000;
+    transition: all 0.3s;
+}
+
+.laranja-color {
+    color: #F17B3C;
+    transition: all 0.3s;
+}
+
+/* Animação Geral */
+
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    /* Posição original */
+}
+
+.fade-out {
+    opacity: 0;
+    transform: translateY(10px);
+    /* Move um pouco para baixo antes de sumir */
+}
+

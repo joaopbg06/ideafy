@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 import images from "../assets/images";
 import "../styles/login.css";
@@ -111,6 +113,15 @@ export default function Login() {
         return () => clearInterval(interval);
     }, [])
 
+
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault(); // Evita o comportamento padrão de recarregar a página
+        navigate("/feed"); // Redireciona para /feed
+    };
+
+
     return (
         //  <div className={tema === "lua" ? "tema-lua" : "tema-sol"}></div>
         <div id="login" className={tema === 'escuro' ? 'escuro-fundo-cinza' : 'claro-fundo-bege'}>
@@ -127,13 +138,13 @@ export default function Login() {
             </div>
 
             <div className={`mainRight ${tema === "escuro" ? "claro-fundo-bege" : "escuro-fundo-cinza"}`}>
-                <div className="login">
+                <div className="loginSide">
                     <h1 className="tituloLogin titulo">Bem vindo de Volta!</h1>
                     <p className={`textoLogin texto ${tema === 'escuro' ? 'escuro-color' : 'claro-color'}`}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     </p>
 
-                    <form className="formulario">
+                    <form className="formulario" onSubmit={handleSubmit}>
                         <input placeholder="Email:" className="inputEmail input subtitulo" />
                         <input placeholder="Senha:" className="inputSenha input subtitulo" />
                         <button type="submit" className={`buttonLogin button subtitulo ${tema === "escuro" ? "escuro-fundo-cinza hover-escuro-button" : "claro-fundo-branco hover-claro-button"}`}>Entrar</button>

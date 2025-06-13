@@ -3,20 +3,21 @@ import { Routes, Route, useLocation, Link } from "react-router-dom";
 
 import Sobre from "./pages/sobre.js";
 import Login from "./pages/login.js";
+import Feed from './pages/feed.js'
 
 import logo from './assets/images/ideiafy-logonome.png';
 
 export default function AppRoutes() {
     const location = useLocation();
 
-    // Rotas que não usam o layout principal
-    const noLayoutRoutes = ["/login", '/registrar'];
+    // Rotas que não usam o headerNav
+    const noLayoutRoutes = ["/login", '/registrar', '/feed'];
 
     const isNoLayout = noLayoutRoutes.includes(location.pathname);
 
     return (
         <>
-            {/* Renderiza o layout principal apenas se não estiver em uma rota sem layout */}
+            {/* Renderiza o headerNav apenas se não estiver em uma rota sem layout */}
             {!isNoLayout && (
                 <div className="header">
                     <div className="nav">
@@ -41,6 +42,7 @@ export default function AppRoutes() {
                 <Routes>
                     <Route path="/sobre" element={<Sobre />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/feed" element={<Feed />} />
                     {/* Adicione outras rotas conforme necessário */}
                 </Routes>
             </div>

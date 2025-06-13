@@ -4,6 +4,7 @@ import Rotas from "./router.js";
 import { Icon } from '@iconify/react';
 
 import './styles/app.css';
+import './styles/reset.css'
 
 
 
