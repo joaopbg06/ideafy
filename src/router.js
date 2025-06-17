@@ -5,7 +5,7 @@ import Sobre from "./pages/sobre.js";
 import Login from "./pages/login.js";
 import Feed from './pages/feed.js'
 
-import logo from './assets/images/ideiafy-logonome.png';
+import logo from './assets/images/ideiafy-logo.png';
 
 export default function AppRoutes() {
     const location = useLocation();

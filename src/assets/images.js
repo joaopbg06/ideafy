@@ -7,14 +7,13 @@ import linkedinIcon from '../assets/icons/linkedin.svg';
 import githubIcon from '../assets/icons/github.svg';
 
 import logoIcon from '../assets/images/ideiafy-logo.png';
-import imgCard from '../assets/images/boneco-ideia.png';
-import imgBoxCard1 from '../assets/images/Lucas-Banner.png';
-import imgBoxCard1perfil from '../assets/images/Lucas-perfil.png';
-import imgBoxCard2 from '../assets/images/Debora-banner.png';
+import imgCard from '../assets/images/Card-Desktop-img.png';
+import imgBoxCard1 from '../assets/images/Card-Mobile-img.png';
+import imgBoxCard1perfil from '../assets/images/Card-FotodePerfil.png';
 
 const images = {
     logoIcon,luaIcon,solIcon,coracaoIcon,comentarIcon,imgCard,
-    imgBoxCard1,imgBoxCard1perfil,imgBoxCard2, googleIcon, linkedinIcon,
+    imgBoxCard1,imgBoxCard1perfil, googleIcon, linkedinIcon,
     githubIcon
 }
 

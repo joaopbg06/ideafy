@@ -56,7 +56,7 @@ export function Cards({ tema, slide }) {
                         <div class="divCard corFundo-card2">
                             <h1 className="tituloCard laranja-color">EcoFusion Power</h1>
                             <div className="conteudoCard">
-                                <img id="imgCard3" class="imgCard" src={images.imgBoxCard2} alt="Card" />
+                                <img id="imgCard3" class="imgCard" alt="Card" />
                                 <div >
                                     <p className="nomeCard laranja-color">Debora Mendes</p>
                                     <p className="descricaoCard ">um gerador híbrido portátil que combina energia solar e eólica em um só dispositivo. Ele funciona em qualquer lugar, ideal para casas, áreas remotas ou emergências.
