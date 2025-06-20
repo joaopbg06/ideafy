@@ -11,10 +11,12 @@ import imgCard from '../assets/images/Card-Desktop-img.png';
 import imgBoxCard1 from '../assets/images/Card-Mobile-img.png';
 import imgBoxCard1perfil from '../assets/images/Card-FotodePerfil.png';
 
+import BannerIncial from '../assets/images/banner-inicial.jpg'
+
 const images = {
     logoIcon,luaIcon,solIcon,coracaoIcon,comentarIcon,imgCard,
     imgBoxCard1,imgBoxCard1perfil, googleIcon, linkedinIcon,
-    githubIcon
+    githubIcon,BannerIncial
 }
 
 export default images;
