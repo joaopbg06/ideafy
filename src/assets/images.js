@@ -11,12 +11,14 @@ import imgCard from '../assets/images/Card-Desktop-img.png';
 import imgBoxCard1 from '../assets/images/Card-Mobile-img.png';
 import imgBoxCard1perfil from '../assets/images/Card-FotodePerfil.png';
 
-import BannerIncial from '../assets/images/banner-inicial.jpg'
+import BannerIncial1 from '../assets/images/banner-inicial-1.jpg';
+import BannerIncial2 from '../assets/images/banner-inicial-2.jpg';
+import BannerIncial3 from '../assets/images/banner-inicial-3.jpg';
 
 const images = {
     logoIcon,luaIcon,solIcon,coracaoIcon,comentarIcon,imgCard,
     imgBoxCard1,imgBoxCard1perfil, googleIcon, linkedinIcon,
-    githubIcon,BannerIncial
+    githubIcon,BannerIncial1,BannerIncial2,BannerIncial3
 }
 
 export default images;
