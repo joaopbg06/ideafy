@@ -24,6 +24,15 @@ img {
 
 /* Texto */
 
+.tituloLogo {
+    font-size: 50px;
+    font-family: 'interBold';
+}
+.fy {
+    color: #6B7BC4;
+}
+
+
 .titulo {
     color: #F17B3C;
     font-size: 40px;
@@ -53,7 +62,7 @@ img {
 }
 
 .escuro-fundo-cinza {
-    background-color: #2F2F2F;
+    background-color: #222222;
     transition: all 0.3s;
 }
 
@@ -91,4 +100,3 @@ img {
     transform: translateY(10px);
     /* Move um pouco para baixo antes de sumir */
 }
-

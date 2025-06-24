@@ -4,14 +4,15 @@ import { Routes, Route, useLocation, Link } from "react-router-dom";
 import Sobre from "./pages/sobre.js";
 import Login from "./pages/login.js";
 import Feed from './pages/feed.js'
+import Inicio from "./pages/inicio.js";
 
-import logo from './assets/images/ideiafy-logo.png';
+import images from "./assets/images";
 
 export default function AppRoutes() {
     const location = useLocation();
 
     // Rotas que não usam o headerNav
-    const noLayoutRoutes = ["/login", '/registrar', '/feed'];
+    const noLayoutRoutes = ["/login", '/registrar', '/feed', '/'];
 
     const isNoLayout = noLayoutRoutes.includes(location.pathname);
 
@@ -21,7 +22,7 @@ export default function AppRoutes() {
             {!isNoLayout && (
                 <div className="header">
                     <div className="nav">
-                        <img src={logo} className="imagemLogo" alt="Logo" />
+                        <img src={images.logoIcon} className="imagemLogo" alt="Logo" />
                         <div className="paginas">
                             <Link className="navInicio navItem" to="/inicio">Inicio</Link>
                             <Link className="navSobre navItem" to="/sobre">Sobre</Link>
@@ -40,6 +41,7 @@ export default function AppRoutes() {
             {/* Define as rotas aqui */}
             <div className="main">
                 <Routes>
+                    <Route path="/" element={<Inicio />} />
                     <Route path="/sobre" element={<Sobre />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/feed" element={<Feed />} />

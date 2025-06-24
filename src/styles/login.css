@@ -29,7 +29,8 @@
 .temaIcon {
     width: 40px;
     cursor: pointer;
-    transition: transform 0.3s ease; /* Corrigido */
+    transition: transform 0.3s ease;
+    /* Corrigido */
 }
 
 .temaIcon:hover {
@@ -220,13 +221,15 @@
 }
 
 .button {
-    color: #F17B3C;
+    background-color: rgb(107, 123, 196, 0.25);
+    border: 1px solid #8D9DE4;
     padding: 10px 50px;
     border-radius: 10px;
     cursor: pointer;
 }
 
-.button:active, .caixa:active {
+.button:active,
+.caixa:active {
     transform: scale(0.90);
 
 }

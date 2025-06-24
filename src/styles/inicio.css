@@ -1,0 +1,50 @@
+#Inicio{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.ImagemFundo {
+    width: 45vw;
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+}
+
+.conteudo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.iconPlaceTema{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 75px;
+    padding: 0 60px;
+}
+
+.logoTexto{
+    width: 180px;
+}
+
+.logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 0;
+}
+
+.separacao{
+    height: 4px;
+    width: 80%;
+    background-color: #2F2F2F;
+    margin: 50px 0;
+}
+
+.textoInicio{
+    width: 60%;
+    margin: 50px 0;
+    text-align: center;
+}
