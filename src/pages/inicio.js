@@ -11,6 +11,22 @@ export default function Inicio() {
         setTema((prev) => (prev === "escuro" ? "claro" : "escuro"));
     };
 
+    const bannerImageKeys = ["BannerInicial1", "BannerInicial2", "BannerInicial3"];
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [fade, setFade] = useState(true);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setFade(false); // Inicia o fade-out
+            setTimeout(() => {
+                // Troca a imagem durante o fade-out
+                setCurrentImageIndex((prevIndex) => (prevIndex + 1) % bannerImageKeys.length);
+                setFade(true); // Inicia o fade-in com a nova imagem
+            }, 1000); // Duração do fade-out
+        }, 10000); // Intervalo total (incluindo fade)
+
+        return () => clearInterval(interval); // Limpa o intervalo ao desmontar o componente
+    }, [bannerImageKeys.length]);
 
     return (
         <div id="Inicio" className={tema === 'escuro' ? 'escuro-fundo-cinza' : 'claro-fundo-bege'}>
@@ -34,7 +50,7 @@ export default function Inicio() {
                 <button className={`button inicioButton ${tema === "escuro" ? 'claro-color' : 'escuro-color'}`}>Continuar</button>
             </div>
 
-            <div className="ImagemFundo" style={{ backgroundImage: `url(${images.BannerInicial1})` }} />
+            <div className={`ImagemFundo ${fade ? "fade-in" : "fade-out"}`} style={{ backgroundImage: `url(${images[bannerImageKeys[currentImageIndex]]})` }} />
         </div>
     )
 }

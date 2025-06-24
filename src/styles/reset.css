@@ -91,12 +91,10 @@ img {
 
 .fade-in {
     opacity: 1;
-    transform: translateY(0);
-    /* Posição original */
+
 }
 
 .fade-out {
     opacity: 0;
-    transform: translateY(10px);
-    /* Move um pouco para baixo antes de sumir */
+
 }
