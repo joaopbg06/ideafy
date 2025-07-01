@@ -13,20 +13,32 @@ export default function Inicio() {
 
     const bannerImageKeys = ["BannerInicial1", "BannerInicial2", "BannerInicial3"];
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const [fade, setFade] = useState(true);
+    const intervalRef = useRef(null); // Referência para o intervalo
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setFade(false); // Inicia o fade-out
-            setTimeout(() => {
-                // Troca a imagem durante o fade-out
-                setCurrentImageIndex((prevIndex) => (prevIndex + 1) % bannerImageKeys.length);
-                setFade(true); // Inicia o fade-in com a nova imagem
-            }, 1000); // Duração do fade-out
+    // Função para reiniciar o intervalo
+    const resetInterval = () => {
+        if (intervalRef.current) {
+            clearInterval(intervalRef.current); // Limpa o intervalo atual
+        }
+        intervalRef.current = setInterval(() => {
+
+            setCurrentImageIndex((prevIndex) => (prevIndex + 1) % bannerImageKeys.length);
+
         }, 10000); // Intervalo total (incluindo fade)
+    };
 
-        return () => clearInterval(interval); // Limpa o intervalo ao desmontar o componente
+    // Inicializa o intervalo no carregamento do componente
+    useEffect(() => {
+        resetInterval();
+
+        return () => clearInterval(intervalRef.current); // Limpa o intervalo ao desmontar
     }, [bannerImageKeys.length]);
+
+    // Função para atualizar o índice manualmente e reiniciar o intervalo
+    const handleManualChange = (index) => {
+        setCurrentImageIndex(index); // Atualiza o índice
+        resetInterval(); // Reinicia o intervalo
+    };
 
     return (
         <div id="Inicio" className={tema === 'escuro' ? 'escuro-fundo-cinza' : 'claro-fundo-bege'}>
@@ -50,7 +62,24 @@ export default function Inicio() {
                 <button className={`button inicioButton ${tema === "escuro" ? 'claro-color' : 'escuro-color'}`}>Continuar</button>
             </div>
 
-            <div className={`ImagemFundo ${fade ? "fade-in" : "fade-out"}`} style={{ backgroundImage: `url(${images[bannerImageKeys[currentImageIndex]]})` }} />
+            <div className={`ImagemFundo `}>
+                <img
+                    src={images[bannerImageKeys[currentImageIndex]]}
+                    alt="Background"
+                    className="background-image"
+                />
+
+                <div className="navCarrossel">
+                    {bannerImageKeys.map((_, index) => (
+                        <div
+                            key={index}
+                            className={`buttonCarrossel ${index === currentImageIndex ? 'ativo' : ''}`}
+                            onClick={() => handleManualChange(index)}
+                        ></div>
+                    ))}
+                </div>
+            </div>
+
         </div>
     )
 }

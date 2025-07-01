@@ -6,10 +6,20 @@
 
 .ImagemFundo {
     width: 45vw;
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    background-position: center; 
-    transition: opacity 1s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    transition: all 1s;
+    display: flex;
+    justify-content: center;
+}
+
+.ImagemFundo .background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .conteudo{
@@ -48,4 +58,22 @@
     width: 60%;
     margin: 50px 0;
     text-align: center;
+}
+
+.buttonCarrossel{
+    width: 50px;
+    height: 25px;
+    border-radius: 10px;
+    background-color: #2F2F2F;
+    margin: 0 5px;
+}
+
+.buttonCarrossel.ativo{
+    background-color: #6b7bc4;
+}
+
+.navCarrossel{
+    display: flex;
+    position: absolute;
+    bottom: 50px;
 }
