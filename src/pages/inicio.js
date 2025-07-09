@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import images from "../assets/images";
 import '../styles/inicio.css'
+import { useNavigate } from "react-router-dom";
 
 export default function Inicio() {
     const [iconSrc, setIconSrc] = useState(images.solIcon);
@@ -40,6 +41,8 @@ export default function Inicio() {
         resetInterval(); // Reinicia o intervalo
     };
 
+    const navigate = useNavigate();
+
     return (
         <div id="Inicio" className={tema === 'escuro' ? 'escuro-fundo-cinza' : 'claro-fundo-bege'}>
             <div className="conteudo">
@@ -59,7 +62,7 @@ export default function Inicio() {
 
                 <p className="subtitulo textoInicio" style={{ color: `#777777` }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-                <button className={`button inicioButton ${tema === "escuro" ? 'claro-color' : 'escuro-color'}`}>Continuar</button>
+                <button onClick={()=> navigate("/login")} className={`button inicioButton ${tema === "escuro" ? 'claro-color' : 'escuro-color'}`} >Continuar</button>
             </div>
 
             <div className={`ImagemFundo `}>

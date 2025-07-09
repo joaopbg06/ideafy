@@ -125,54 +125,76 @@ export default function Login() {
     return (
         //  <div className={tema === "lua" ? "tema-lua" : "tema-sol"}></div>
         <div id="login" className={tema === 'escuro' ? 'escuro-fundo-cinza' : 'claro-fundo-bege'}>
-            <div className='mainLeft'>
+
+
+            <div className={`mainRight `}>
+
                 <div className="icons">
-                    <img className="logoIcon icon" src={images.logoIcon} alt="Logo" />
+
 
                     <img className={`temaIcon icon `} src={iconSrc} alt="Lua" onClick={toggleIcon} />
                 </div>
-
-                <div className={`card-container ${fade ? "fade-out" : "fade-in"}`}>
-                    <Cards tema={tema} slide={slide} />
-                </div>
-            </div>
-
-            <div className={`mainRight ${tema === "escuro" ? "claro-fundo-bege" : "escuro-fundo-cinza"}`}>
                 <div className="loginSide">
-                    <h1 className="tituloLogin titulo">Bem vindo de Volta!</h1>
-                    <p className={`textoLogin texto ${tema === 'escuro' ? 'escuro-color' : 'claro-color'}`}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+                    <div className="logoA">
+                        <img className="logoTexto" src={images.logoIcon} alt="Logo" />
+                    </div>
+
+                    <h1 className="tituloLogin titulo">Login</h1>
+
+                    <p className={`textoLogin texto `}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                     </p>
 
                     <form className="formulario" onSubmit={handleSubmit}>
-                        <input placeholder="Email:" className="inputEmail input subtitulo" />
-                        <input placeholder="Senha:" className="inputSenha input subtitulo" />
-                        <button type="submit" className={`buttonLogin button subtitulo ${tema === "escuro" ? "escuro-fundo-cinza hover-escuro-button" : "claro-fundo-branco hover-claro-button"}`}>Entrar</button>
+                        <label className="texto">Email:</label>
+                        <input
+                            placeholder="texto@gmail.com"
+                            className="inputEmail input texto"
+                            style={{
+                                backgroundImage: `url(${images.emailIcon})`,
+                            }}
+                        />
+                        <label className="texto">Password:</label>
+                        <input 
+                        placeholder="********" 
+                        className="inputSenha input texto"
+                            style={{
+                                backgroundImage: `url(${images.emailIcon})`,
+                            }} />
+
                     </form>
 
-                    <h2 className={`subtituloLogin subtitulo ${tema === "escuro" ? "escuro-color" : "claro-color"}`}>Esqueceu a senha?</h2>
+
                 </div>
 
-                <div className="separacao">
-                    <div className={`linha ${tema === "escuro" ? "escuro-fundo-preto" : "claro-fundo-branco"}`}></div>
+                <div className="separacaoA">
+                    <div className={`linha `}></div>
 
-                    <h1 className="tituloSeparacao titulo">ou</h1>
-                    <div className={`linha ${tema === "escuro" ? "escuro-fundo-preto" : "claro-fundo-branco"}`}></div>
+                    <h1 className="tituloSeparacao subtitulo">ou</h1>
+                    <div className={`linha `}></div>
                 </div>
 
                 <div className="outros">
-                    <div className={`caixa ${tema === "escuro" ? "escuro-fundo-cinza escuro-hover-caixa claro-color" : "claro-fundo-branco claro-hover-caixa escuro-color"}`}>
+                    <div className={`caixa `}>
                         <img src={images.githubIcon} className='loginIcons githubIcon' />
-                        <p className={` subtitulo `}>Login com Github</p>
+                        
                     </div>
-                    <div className={`caixa ${tema === "escuro" ? "escuro-fundo-cinza escuro-hover-caixa claro-color" : "claro-fundo-branco claro-hover-caixa escuro-color"}`}>
+                    <div className={`caixa `}>
                         <img src={images.googleIcon} className='loginIcons' />
-                        <p className={` subtitulo `}>Login com Google</p>
+                        
                     </div>
-                    <div className={`caixa ${tema === "escuro" ? "escuro-fundo-cinza escuro-hover-caixa claro-color" : "claro-fundo-branco claro-hover-caixa escuro-color"}`}>
+                    <div className={`caixa `}>
                         <img src={images.linkedinIcon} className='loginIcons' />
-                        <p className={` subtitulo `}>Login com Linkedin</p>
+                        
                     </div>
+                </div>
+            </div>
+
+            <div className='mainLeft'>
+
+                <div className={`card-container ${fade ? "fade-out" : "fade-in"}`}>
+                    {/* <Cards tema={tema} slide={slide} /> */}
                 </div>
             </div>
         </div>

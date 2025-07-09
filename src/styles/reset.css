@@ -34,7 +34,7 @@ img {
 
 
 .titulo {
-    color: #F17B3C;
+    color: #6B7BC4;
     font-size: 40px;
     font-family: 'interBold';
 }
@@ -47,6 +47,7 @@ img {
 .texto {
     font-size: 14px;
     font-family: 'interBold';
+    color: #777777;
 }
 
 
@@ -82,10 +83,7 @@ img {
     transition: all 0.3s;
 }
 
-.laranja-color {
-    color: #F17B3C;
-    transition: all 0.3s;
-}
+
 
 /* Animação Geral */
 

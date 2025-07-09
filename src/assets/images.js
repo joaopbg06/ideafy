@@ -5,6 +5,8 @@ import solIcon from '../assets/icons/sol.svg';
 import googleIcon from '../assets/icons/google.svg';
 import linkedinIcon from '../assets/icons/linkedin.svg';
 import githubIcon from '../assets/icons/github.svg';
+import emailIcon from '../assets/icons/email.svg';
+import senhaIcon from '../assets/icons/senha.svg';
 
 import logoIcon from '../assets/icons/ideiafy-logo.png';
 
@@ -28,7 +30,9 @@ const images = {
     githubIcon,
     BannerInicial1,
     BannerInicial2,
-    BannerInicial3
+    BannerInicial3,
+    emailIcon,
+    senhaIcon
 }
 
 export default images;

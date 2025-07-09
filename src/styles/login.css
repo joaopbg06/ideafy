@@ -22,7 +22,7 @@
     width: 39vw;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: end;
     margin: 30px 0 0;
 }
 
@@ -198,26 +198,34 @@
     width: 60vw;
     height: 100vh;
     border-radius: 10px 0 0 10px;
-    box-shadow: -4px 0 10px #2F2F2F;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-
+.logoA {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px 0;
+}
 
 /* formulario para logar */
 
 
-.input {
+input.input {
     outline-style: none;
     color: #fff;
-    background-color: #F17B3C;
+    background-color: #1B1B1B;
     border-radius: 10px;
-    padding: 3% 25px;
+    padding: 3% 50px;
     margin-bottom: 16px;
     width: 100%;
+    background-repeat: no-repeat;
+    background-position: 20px center;
+    background-size: 16px 16px;
+
 }
 
 .button {
@@ -258,8 +266,12 @@
 .formulario {
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 100%;
+}
+
+
+label {
+    margin: 0 0 10px 5px;
 }
 
 .textoLogin {
@@ -281,21 +293,23 @@
 
 }
 
-.separacao {
+.separacaoA {
     display: flex;
     align-items: center;
-    width: 75%;
+    width: 50%;
+    margin-top: 50px;
 }
 
 .tituloSeparacao {
     font-size: 24px;
     margin: 0 10px;
+    color: #6B7BC4;
 }
 
 .linha {
     height: 2px;
     width: 100%;
-
+    background-color: #2f2f2f;
 }
 
 .outros {
@@ -308,14 +322,15 @@
 }
 
 .caixa {
-    width: 45%;
-    height: 50px;
+    padding: 15px 25px;
+    background-color: #1B1B1B;
     border-radius: 10px;
     margin: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+
 }
 
 .claro-hover-caixa:hover {
@@ -326,14 +341,8 @@
     background-color: #393232;
 }
 
-.loginIcons {
-    width: 24px;
-    margin: 0 15px 0 0;
-}
 
-.githubIcon {
-    width: 30px;
-}
+
 
 /* Responcividade */
 
