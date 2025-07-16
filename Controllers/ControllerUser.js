@@ -1,28 +1,33 @@
-const ModelUser = require('../models/ModelsUser');
+const User = require('../models/User');
 
 class ControllerUser{
-    UserListar(req,res){
-        ModelUser.ListarUser((erro,resultado) => {
-            if(erro){
-                return res.status(400).json({message: "Erro ao Listar",erro});
-            }
-            return res.status(200).json({resultado});
-        })
+
+    async UserListar(req,res){
+        try{
+            //esperando a busca de usuarios
+            const resultado = await User.findAll();
+            // retornando os usuarios
+            return res.status(200).json({resultado})
+        }catch(erro){
+            return res.status(400).json({message:"Erro ao Listar Usuarios", erro})
+        }
     }
-    UserAdicionar(req,res){
+
+    async UserAdicionar(req,res){
         const {nome,email,senha}= req.body;
 
         if(!nome || !email || !senha){
             return res.status(400).json({message:"Preencha todos os campos"});
         }
-        const novoUser = new ModelUser(null,nome,email,senha);
 
-        novoUser.AdicionarUser((erro,resultado) => {
-            if(erro){
-                return res.status(400).json({message: "Erro ao adicionar",erro});
-            }
-            return res.status(201).json({message : "Adicionado com Sucesso"});
-        })
+        try{
+            // espera a criação do usuario
+            await User.create({nome,email,senha});
+            // 201 criação 
+            return res.status(201).json({message:"Usuario Adicionado com Sucesso!!"});
+        }catch(erro){
+            return res.status(400).json({message:"Erro ao adicionar Usuario",erro})
+        }
     }
 }
 

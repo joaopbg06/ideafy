@@ -1,26 +1,30 @@
-const ModelUser = require('../models/ModelsUser');
+const User = require('../models/User');
 
 class ControllerLogin{
-    VerificarLogin(req,res){
+    async VerificarLogin(req,res){
         const {email,senha}= req.body;
-        const usuario = new ModelUser(null,null,email,senha);
+        
+        if(!email || !senha){
+            return res.status(400).json({message:"Preencha todos os campos!!"});
+        }
 
-        usuario.VerificarLogin((erro,resultado) =>{
-            if(erro){
-                console.error(erro);
-                return res.status(500).json({message:"Erro no Servidor"});
+        try{
+            const usuario = await User.findOne({ where: {email,senha} });
+
+            // verificação de email ou senha errados
+            if(!usuario){
+                // 401 nao autorizado
+                return res.status(401).json({message:"Email ou Senha Incorretos"});
             }
 
-            if(resultado.length === 0){
-                return res.status(400).json({message:"Usuario ou Senha incorretos"});
-            }
+            return res.status(200).json({message:"Login realizado com Sucesso!!"});
+        }
 
-            return res.status(200).json({
-                message:"Logado com sucesso",
-                user: resultado[0]
-            });
-        });
-    }
+        catch(erro){
+            return res.status(400).json({message:"Erro ao Logar",erro});
+        }   
+    };
 }
+
 
 module.exports = new ControllerLogin();
