@@ -1,7 +1,7 @@
 // tabela usuarios
 // importacao do Datatypes
 const {DataTypes} = require('sequelize');
-const sequelize = require('../config/ConexaoDB');
+const sequelize = require('../config/DB');
 
 const User = sequelize.define('User',{
     // Inserindo os campos da tabela users 
@@ -10,7 +10,7 @@ const User = sequelize.define('User',{
         autoIncrement:true,
         primaryKey:true
     },
-    nome:{
+    name:{
         type:DataTypes.STRING,
         allowNull:false
     },
@@ -18,7 +18,7 @@ const User = sequelize.define('User',{
         type:DataTypes.STRING,
         allowNull:false
     },
-    senha:{
+    password:{
         type:DataTypes.STRING,
         allowNull:false
     }   

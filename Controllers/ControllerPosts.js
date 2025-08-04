@@ -1,16 +1,16 @@
 const Post = require('../models/Post')
 
 class ControllerPost{
-    async AdicionarPost(req,res){
-        const {titulo,descricao,UserId} = req.body;
+    async AddPost(req,res){
+        const {title,description,UserId} = req.body;
 
         //adicionar UserId para saber qual usuario esta fazendo o post
-        if(!titulo && !descricao){
+        if(!title && !description){
             return res.status(400).json({message:"Preencha todos os campos"});
         }
 
         try{
-            await Post.create({titulo,descricao,UserId});
+            await Post.create({title,description,UserId});
 
             return res.status(201).json({message: "Post Adicionado com sucesso!!"});
         }catch(erro){
@@ -18,7 +18,7 @@ class ControllerPost{
         }
     }
 
-    async VerPosts(req,res){
+    async ViewPosts(req,res){
         try{
             const resultado = await Post.findAll();
 

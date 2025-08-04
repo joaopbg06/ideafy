@@ -4,10 +4,15 @@ const ControllerUser = require('../Controllers/ControllerUser');
 const ControllerLogin = require('../Controllers/ControllerLogin');
 const ControllerPosts = require('../Controllers/ControllerPosts');
 
-router.get('/usuarios',ControllerUser.UserListar);
-router.post('/usuarios',ControllerUser.UserAdicionar);
-router.post('/login',ControllerLogin.VerificarLogin);
-router.get('/posts',ControllerPosts.VerPosts);
-router.post('/posts',ControllerPosts.AdicionarPost);
+// users
+router.get('/users',ControllerUser.ListUser);
+router.post('/users',ControllerUser.AddUser);
+
+// login
+router.post('/login',ControllerLogin.CheckLogin);
+
+// Posts
+router.get('/posts',ControllerPosts.ViewPosts);
+router.post('/posts',ControllerPosts.AddPost);
 
 module.exports = router;

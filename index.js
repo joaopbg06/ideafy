@@ -1,8 +1,8 @@
 const express = require('express');
-const sequelize = require('./config/ConexaoDB');
+const sequelize = require('./config/DB');
 const app = express();
 const PORT = 3000;
-const RotasUser = require('./routes/RotasUser')
+const RotasUser = require('./routes/Routes')
 
 
 // importando models para ele criar as tabelas com sequelize.sync

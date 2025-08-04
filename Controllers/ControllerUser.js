@@ -2,7 +2,7 @@ const User = require('../models/User');
 
 class ControllerUser{
 
-    async UserListar(req,res){
+    async ListUser(req,res){
         try{
             //esperando a busca de usuarios
             const resultado = await User.findAll();
@@ -13,16 +13,16 @@ class ControllerUser{
         }
     }
 
-    async UserAdicionar(req,res){
-        const {nome,email,senha}= req.body;
+    async AddUser(req,res){
+        const {name,email,password}= req.body;
 
-        if(!nome || !email || !senha){
+        if(!name || !email || !password){
             return res.status(400).json({message:"Preencha todos os campos"});
         }
 
         try{
             // espera a criação do usuario
-            await User.create({nome,email,senha});
+            await User.create({name,email,password});
             // 201 criação 
             return res.status(201).json({message:"Usuario Adicionado com Sucesso!!"});
         }catch(erro){

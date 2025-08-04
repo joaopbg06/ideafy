@@ -1,15 +1,15 @@
 const User = require('../models/User');
 
 class ControllerLogin{
-    async VerificarLogin(req,res){
-        const {email,senha}= req.body;
+    async CheckLogin(req,res){
+        const {email,password}= req.body;
         
-        if(!email || !senha){
+        if(!email || !password){
             return res.status(400).json({message:"Preencha todos os campos!!"});
         }
 
         try{
-            const usuario = await User.findOne({ where: {email,senha} });
+            const usuario = await User.findOne({ where: {email,password} });
 
             // verificação de email ou senha errados
             if(!usuario){

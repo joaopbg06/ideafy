@@ -1,5 +1,5 @@
 const {DataTypes} = require('sequelize');
-const sequelize = require('../config/ConexaoDB');
+const sequelize = require('../config/DB');
 const User = require('./User');
 
 const Posts = sequelize.define('Posts',{
@@ -8,11 +8,11 @@ const Posts = sequelize.define('Posts',{
         autoIncrement:true,
         primaryKey:true
     },
-    titulo:{
+    title:{
         type:DataTypes.STRING,
         allowNull:false
     },
-    descricacao:{
+    description:{
         type:DataTypes.STRING,
         allowNull:true
     },
