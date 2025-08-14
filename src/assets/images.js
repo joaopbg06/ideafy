@@ -1,38 +1,28 @@
-import luaIcon from '../assets/icons/lua.svg';
-import solIcon from '../assets/icons/sol.svg';
+// Reset
+import Logo from './images/Logo.png';
+
+// Tela Inicial
+import Banner1 from './images/Banner1.jpg';
+import Banner2 from './images/Banner2.jpg';
+import Banner3 from './images/Banner3.jpg';
+
+// Login e Registro
+import DeskCard from './images/DeskCard.png';
+import MobiCard from './images/MobiCard.png';
+import PhotoCard from './images/PhotoCard.png';
 
 
-import googleIcon from '../assets/icons/google.svg';
-import linkedinIcon from '../assets/icons/linkedin.svg';
-import githubIcon from '../assets/icons/github.svg';
-import emailIcon from '../assets/icons/email.svg';
-import senhaIcon from '../assets/icons/senha.svg';
-
-import logoIcon from '../assets/icons/ideiafy-logo.png';
-
-import imgCard from '../assets/images/Card-Desktop-img.png';
-import imgBoxCard1 from '../assets/images/Card-Mobile-img.png';
-import imgBoxCard1perfil from '../assets/images/Card-FotodePerfil.png';
-
-import BannerInicial1 from '../assets/images/banner-inicial-1.jpg';
-import BannerInicial2 from '../assets/images/banner-inicial-2.jpg';
-import BannerInicial3 from '../assets/images/banner-inicial-3.jpg';
 
 const images = {
-    logoIcon,
-    luaIcon,
-    solIcon,
-    imgCard,
-    imgBoxCard1,
-    imgBoxCard1perfil,
-    googleIcon,
-    linkedinIcon,
-    githubIcon,
-    BannerInicial1,
-    BannerInicial2,
-    BannerInicial3,
-    emailIcon,
-    senhaIcon
+
+    // Reset 
+    Logo,
+
+    // Inicial
+    Banner1,Banner2,Banner3,
+
+    // Login e Registro
+    DeskCard,MobiCard,PhotoCard
 }
 
 export default images;

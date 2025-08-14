@@ -1,4 +1,9 @@
-/* Reset */
+/* Reset CSS com Inter Font */
+
+/* Importação da fonte Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -6,93 +11,82 @@
     box-sizing: border-box;
 }
 
+/* Configuração global da fonte */
+html {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #333333;
+    background-color: #ffffff;
+}
+
+/* Reset para elementos comuns */
 img {
     width: 100%;
     height: auto;
+    display: block;
 }
 
-/* Fontes */
-@font-face {
-    font-family: 'interSemiBold';
-    src: url('../assets/font/Inter/static/Inter_18pt-SemiBold.ttf');
+/* Reset para botões */
+button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    cursor: pointer;
+    background: none;
+    border: none;
 }
 
-@font-face {
-    font-family: 'interBold';
-    src: url('../assets/font/Inter/static/Inter_18pt-Bold.ttf');
+/* Reset para inputs */
+input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
 }
 
-/* Texto */
-
-.tituloLogo {
-    font-size: 50px;
-    font-family: 'interBold';
-}
-.fy {
-    color: #6B7BC4;
+/* Reset para headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 600;
+    line-height: 1.2;
 }
 
-
-.titulo {
-    color: #6B7BC4;
-    font-size: 40px;
-    font-family: 'interBold';
+/* Reset para parágrafos */
+p {
+    font-family: inherit;
+    line-height: 1.6;
 }
 
-.subtitulo {
-    font-size: 20px;
-    font-family: 'interBold';
+/* Reset para links */
+a {
+    font-family: inherit;
+    color: inherit;
+    text-decoration: none;
 }
 
-.texto {
-    font-size: 14px;
-    font-family: 'interBold';
-    color: #777777;
+/* Lista sem estilo */
+ul, ol {
+    list-style: none;
 }
 
-
-/* Temas  */
-.claro-fundo-bege {
-    background-color: #FAF5F1;
-    transition: all 0.3s;
+/* Scroll suave */
+html {
+    scroll-behavior: smooth;
 }
 
-.claro-fundo-branco {
-    background-color: #fff;
-    transition: all 0.3s;
+/* Remove outline padrão e adiciona um personalizado */
+*:focus {
+    outline: none;
 }
 
-.escuro-fundo-cinza {
-    background-color: #222222;
-    transition: all 0.3s;
-}
-
-.escuro-fundo-preto {
-    background-color: #000;
-    transition: all 0.3s;
-}
-
-.claro-color,
-.input::placeholder {
-    color: #fff;
-    transition: all 0.3s;
-}
-
-.escuro-color {
-    color: #000;
-    transition: all 0.3s;
-}
-
-
-
-/* Animação Geral */
-
-.fade-in {
-    opacity: 1;
-
-}
-
-.fade-out {
-    opacity: 0;
-
+*:focus-visible {
+    outline: 2px solid #8b9dc3;
+    outline-offset: 2px;
 }

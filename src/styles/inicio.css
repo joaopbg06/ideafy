@@ -1,79 +1,606 @@
-#Inicio{
+#Inicio {
     width: 100%;
     height: 100vh;
     display: flex;
+    /* REMOVIDO: font-family - vai herdar do reset.css */
 }
 
-.ImagemFundo {
-    width: 45vw;
-    position: relative;
-    overflow: hidden;
-    transition: all 1s;
+/* ===== TEMAS ===== */
+.escuro-fundo-cinza {
+    background-color: #2a2a2a;
+    color: #ffffff;
+}
+
+.claro-fundo-bege {
+    background-color: #f8f6f3;
+    color: #333333;
+}
+
+.escuro-color {
+    color: #333333 !important;
+}
+
+.claro-color {
+    color: #ffffff !important;
+}
+
+/* ===== CONTEÚDO PRINCIPAL ===== */
+.conteudo {
+    width: 50%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    position: relative;
+    background-color: inherit;
+}
+
+/* ===== TOGGLE DE TEMA MELHORADO ===== */
+.iconPlaceTema {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.temaIcon {
+    background: rgba(139, 157, 195, 0.1);
+    border: 2px solid rgba(139, 157, 195, 0.2);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.75rem;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    color: #8b9dc3;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(139, 157, 195, 0.1);
+}
+
+.temaIcon:hover {
+    border-color: #8b9dc3;
+    background-color: rgba(139, 157, 195, 0.15);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(139, 157, 195, 0.2);
+}
+
+.temaIcon:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(139, 157, 195, 0.15);
+}
+
+/* ===== LOGO ===== */
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.logo-icon {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 
-.ImagemFundo .background-image {
+.Logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Logo img {
+    max-width: 200px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(139, 157, 195, 0.1));
+}
+
+.tituloLogo {
+    font-size: 3.2rem;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -1px;
+    line-height: 1;
+    /* REMOVIDO: font-family - vai herdar do reset.css */
+}
+
+.escuro-fundo-cinza .tituloLogo span:first-child {
+    color: #ffffff;
+}
+
+.claro-fundo-bege .tituloLogo span:first-child {
+    color: #2a2a2a;
+}
+
+.fy {
+    color: #8b9dc3 !important;
+    font-weight: 600;
+}
+
+/* ===== SEPARADOR ===== */
+.separacao {
+    height: 2px;
+    width: 60%;
+    background-color: #777777;
+    margin: 2.5rem 0;
+    opacity: 0.6;
+}
+
+/* ===== TEXTO ===== */
+.textoInicio {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: center;
+    margin: 2rem 0 3rem 0;
+    max-width: 85%;
+    color: #777777 !important;
+    font-weight: 400;
+    opacity: 0.9;
+    /* REMOVIDO: font-family - vai herdar do reset.css */
+}
+
+/* ===== BOTÃO ===== */
+.inicioButton {
+    background-color: transparent;
+    border: 2px solid #8b9dc3;
+    color: #8b9dc3 !important;
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    min-width: 150px;
+    /* REMOVIDO: font-family - vai herdar do reset.css */
+}
+
+.inicioButton:hover {
+    background-color: #8b9dc3;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(139, 157, 195, 0.3);
+}
+
+.inicioButton:active {
+    transform: translateY(0);
+}
+
+/* ===== ÁREA DA IMAGEM ===== */
+.ImagemFundo {
+    width: 50%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #d4c5e8 0%, #b8a9d4 50%, #9b8cc7 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagem-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.background-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
-.conteudo{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.background-image.ativa {
+    opacity: 1;
 }
 
-.iconPlaceTema{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 75px;
-    padding: 0 60px;
-}
-
-.logoTexto{
-    width: 180px;
-}
-
-.logo{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 50px 0;
-}
-
-.separacao{
-    height: 4px;
-    width: 80%;
-    background-color: #2F2F2F;
-    margin: 50px 0;
-}
-
-.textoInicio{
-    width: 60%;
-    margin: 50px 0;
-    text-align: center;
-}
-
-.buttonCarrossel{
-    width: 50px;
-    height: 25px;
-    border-radius: 10px;
-    background-color: #2F2F2F;
-    margin: 0 5px;
-}
-
-.buttonCarrossel.ativo{
-    background-color: #6b7bc4;
-}
-
-.navCarrossel{
-    display: flex;
+/* ===== NAVEGAÇÃO DO CARROSSEL ===== */
+.navCarrossel {
     position: absolute;
-    bottom: 50px;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.buttonCarrossel {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.buttonCarrossel.ativo {
+    background-color: #ffffff;
+    transform: scale(1.2);
+}
+
+.buttonCarrossel:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+/* Desktop grande (1440px+) */
+@media (min-width: 1440px) {
+    .conteudo {
+        padding: 4rem 3rem;
+    }
+    
+    .Logo img {
+        max-width: 220px;
+        max-height: 220px;
+    }
+    
+    .tituloLogo {
+        font-size: 3.8rem;
+    }
+    
+    .textoInicio {
+        font-size: 1.1rem;
+        max-width: 80%;
+    }
+    
+    .inicioButton {
+        padding: 1.2rem 3rem;
+        font-size: 1.1rem;
+    }
+    
+    .temaIcon {
+        width: 52px;
+        height: 52px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Laptops (1024px - 1439px) */
+@media (max-width: 1439px) and (min-width: 1024px) {
+    .Logo img {
+        max-width: 180px;
+        max-height: 180px;
+    }
+    
+    .tituloLogo {
+        font-size: 3rem;
+    }
+    
+    .temaIcon {
+        width: 46px;
+        height: 46px;
+    }
+}
+
+/* Tablets (768px - 1023px) */
+@media (max-width: 1023px) {
+    #Inicio {
+        flex-direction: column;
+    }
+    
+    .conteudo {
+        width: 100%;
+        height: 60vh;
+        padding: 2rem 1.5rem;
+    }
+    
+    .ImagemFundo {
+        width: 100%;
+        height: 40vh;
+    }
+    
+    .Logo img {
+        max-width: 160px;
+        max-height: 160px;
+    }
+    
+    .tituloLogo {
+        font-size: 2.8rem;
+    }
+    
+    .iconPlaceTema {
+        top: 1.5rem;
+        right: 1.5rem;
+    }
+    
+    .temaIcon {
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
+    }
+}
+
+/* Smartphones (481px - 767px) */
+@media (max-width: 767px) {
+    #Inicio {
+        flex-direction: column;
+    }
+    
+    .conteudo {
+        padding: 1.5rem 1rem;
+        height: 100vh;
+        width: 100%;
+    }
+    
+    .ImagemFundo {
+        display: none;
+    }
+    
+    .Logo img {
+        max-width: 140px;
+        max-height: 140px;
+    }
+    
+    .logo-icon {
+        margin-bottom: 1rem;
+    }
+    
+    .tituloLogo {
+        font-size: 2.2rem;
+    }
+    
+    .textoInicio {
+        font-size: 0.9rem;
+        max-width: 90%;
+        margin: 1.5rem 0 2.5rem 0;
+    }
+    
+    .inicioButton {
+        padding: 0.9rem 2rem;
+        font-size: 0.9rem;
+    }
+    
+    .separacao {
+        width: 70%;
+        margin: 2rem 0;
+    }
+    
+    .iconPlaceTema {
+        top: 1rem;
+        right: 1rem;
+    }
+    
+    .temaIcon {
+        width: 42px;
+        height: 42px;
+        font-size: 0.95rem;
+        padding: 0.6rem;
+    }
+}
+
+/* Smartphones pequenos (até 480px) */
+@media (max-width: 480px) {
+    #Inicio {
+        flex-direction: column;
+    }
+    
+    .conteudo {
+        padding: 1rem 0.8rem;
+        height: 100vh;
+        width: 100%;
+    }
+    
+    .ImagemFundo {
+        display: none;
+    }
+    
+    .Logo img {
+        max-width: 120px;
+        max-height: 120px;
+    }
+    
+    .logo-icon {
+        margin-bottom: 0.8rem;
+    }
+    
+    .tituloLogo {
+        font-size: 1.8rem;
+    }
+    
+    .textoInicio {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        max-width: 95%;
+    }
+    
+    .inicioButton {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.85rem;
+        min-width: 130px;
+    }
+    
+    .separacao {
+        width: 80%;
+        margin: 1.5rem 0;
+    }
+    
+    .temaIcon {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+        border-radius: 10px;
+    }
+}
+
+/* Smartphones muito pequenos (até 360px) */
+@media (max-width: 360px) {
+    .conteudo {
+        padding: 0.8rem 0.6rem;
+        height: 100vh;
+        width: 100%;
+    }
+    
+    .ImagemFundo {
+        display: none;
+    }
+    
+    .Logo img {
+        max-width: 100px;
+        max-height: 100px;
+    }
+    
+    .tituloLogo {
+        font-size: 1.6rem;
+    }
+    
+    .textoInicio {
+        font-size: 0.8rem;
+    }
+    
+    .inicioButton {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.8rem;
+        min-width: 120px;
+    }
+    
+    .iconPlaceTema {
+        top: 0.8rem;
+        right: 0.8rem;
+    }
+    
+    .temaIcon {
+        width: 36px;
+        height: 36px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Modo paisagem em dispositivos móveis */
+@media (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
+    #Inicio {
+        flex-direction: row;
+    }
+    
+    .conteudo {
+        width: 50%;
+        height: 100vh;
+        padding: 1rem 0.8rem;
+    }
+    
+    .ImagemFundo {
+        width: 50%;
+        height: 100vh;
+    }
+    
+    .Logo img {
+        max-width: 60px;
+        max-height: 60px;
+    }
+    
+    .logo-icon {
+        margin-bottom: 0.5rem;
+    }
+    
+    .tituloLogo {
+        font-size: 1.6rem;
+    }
+    
+    .textoInicio {
+        font-size: 0.75rem;
+        margin: 1rem 0;
+        max-width: 90%;
+    }
+    
+    .separacao {
+        margin: 1rem 0;
+        width: 60%;
+    }
+    
+    .inicioButton {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .iconPlaceTema {
+        top: 0.8rem;
+        right: 0.8rem;
+    }
+    
+    .temaIcon {
+        width: 36px;
+        height: 36px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Tablets em modo paisagem */
+@media (min-width: 769px) and (max-width: 1023px) and (orientation: landscape) {
+    .conteudo {
+        height: 55vh;
+        padding: 1.5rem;
+    }
+    
+    .ImagemFundo {
+        height: 45vh;
+    }
+    
+    .Logo img {
+        max-width: 90px;
+        max-height: 90px;
+    }
+    
+    .tituloLogo {
+        font-size: 2.4rem;
+    }
+}
+
+/* Ajustes para telas ultrawide */
+@media (min-width: 1920px) {
+    .conteudo {
+        max-width: 50%;
+        padding: 5rem 4rem;
+    }
+    
+    .Logo img {
+        max-width: 160px;
+        max-height: 160px;
+    }
+    
+    .tituloLogo {
+        font-size: 4.2rem;
+    }
+    
+    .textoInicio {
+        font-size: 1.2rem;
+        max-width: 75%;
+    }
+    
+    .inicioButton {
+        padding: 1.3rem 3.5rem;
+        font-size: 1.2rem;
+    }
+    
+    .temaIcon {
+        width: 56px;
+        height: 56px;
+        font-size: 1.3rem;
+    }
 }
