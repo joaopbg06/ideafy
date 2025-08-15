@@ -12,12 +12,13 @@ export default function Inicio() {
 
     // Array de textos para o carrossel
     const textos = [
-        "Transforme suas ideias em realidade com nossa plataforma inovadora de criação e desenvolvimento.",
-        "Conecte-se com uma comunidade criativa e colaborativa que valoriza o poder das boas ideias.",
-        "Descubra ferramentas intuitivas que simplificam o processo de tirar projetos do papel.",
-        "Explore um universo de possibilidades onde a criatividade encontra a tecnologia.",
-        "Junte-se a milhares de creators que já transformaram suas visões em projetos de sucesso."
+        "Na ideiafy, suas ideias encontram o espaço perfeito para crescer.",
+        "Conecte-se com pessoas que podem colaborar, apoiar e transformar seu projeto em realidade.",
+        "Transforme inspiração em ação: compartilhe, colabore e inove com o ideiafy.",
+        "Aqui, cada ideia tem a chance de virar algo grandioso.",
+        "Junte-se à comunidade ideiafy e descubra o poder de criar junto."
     ];
+
 
     const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
