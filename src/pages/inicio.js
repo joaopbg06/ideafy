@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import Images from '../assets/images';
 import '../styles/inicio.css';
 
@@ -9,6 +9,18 @@ export default function Inicio() {
         setTema((prev) => (prev === "escuro" ? "claro" : "escuro"));
     };
 
+    // Array de textos para o carrossel
+    const textos = [
+        "Transforme suas ideias em realidade com nossa plataforma inovadora de criação e desenvolvimento.",
+        "Conecte-se com uma comunidade criativa e colaborativa que valoriza o poder das boas ideias.",
+        "Descubra ferramentas intuitivas que simplificam o processo de tirar projetos do papel.",
+        "Explore um universo de possibilidades onde a criatividade encontra a tecnologia.",
+        "Junte-se a milhares de creators que já transformaram suas visões em projetos de sucesso."
+    ];
+
+    const [currentTextIndex, setCurrentTextIndex] = useState(0);
+
+    // Carrossel de imagens
     const bannerImages = [
         Images.Banner1, 
         Images.Banner2,
@@ -17,28 +29,48 @@ export default function Inicio() {
     
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const intervalRef = useRef(null);
+    const textIntervalRef = useRef(null);
 
-    const resetInterval = () => {
+    // Função para resetar o intervalo das imagens
+    const resetImageInterval = useCallback(() => {
         if (intervalRef.current) {
             clearInterval(intervalRef.current);
         }
         intervalRef.current = setInterval(() => {
             setCurrentImageIndex((prevIndex) => (prevIndex + 1) % bannerImages.length);
         }, 5000);
-    };
-
-    useEffect(() => {
-        resetInterval();
-        return () => clearInterval(intervalRef.current);
     }, [bannerImages.length]);
 
-    const handleManualChange = (index) => {
+    // Função para resetar o intervalo dos textos
+    const resetTextInterval = useCallback(() => {
+        if (textIntervalRef.current) {
+            clearInterval(textIntervalRef.current);
+        }
+        textIntervalRef.current = setInterval(() => {
+            setCurrentTextIndex((prevIndex) => (prevIndex + 1) % textos.length);
+        }, 15000); // 15 segundos
+    }, [textos.length]);
+
+    // Efeito para carrossel de imagens
+    useEffect(() => {
+        resetImageInterval();
+        return () => clearInterval(intervalRef.current);
+    }, [resetImageInterval]);
+
+    // Efeito para carrossel de textos
+    useEffect(() => {
+        resetTextInterval();
+        return () => clearInterval(textIntervalRef.current);
+    }, [resetTextInterval]);
+
+    const handleManualImageChange = (index) => {
         setCurrentImageIndex(index);
-        resetInterval();
+        resetImageInterval();
     };
 
     const handleContinuar = () => {
         // navigate("/login") - adicione aqui quando integrar com react-router
+        console.log("Navegando para login...");
     };
 
     // Ícones SVG para um visual mais profissional
@@ -86,9 +118,16 @@ export default function Inicio() {
 
                 <div className="separacao"></div>
 
-                <p className="subtitulo textoInicio">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
+                <div className="subtitulo textoInicio">
+                    {textos.map((texto, index) => (
+                        <p 
+                            key={index}
+                            className={`texto-slide ${index === currentTextIndex ? 'ativo' : ''}`}
+                        >
+                            {texto}
+                        </p>
+                    ))}
+                </div>
 
                 <button 
                     onClick={handleContinuar} 
@@ -116,13 +155,13 @@ export default function Inicio() {
                         <div
                             key={index}
                             className={`buttonCarrossel ${index === currentImageIndex ? 'ativo' : ''}`}
-                            onClick={() => handleManualChange(index)}
+                            onClick={() => handleManualImageChange(index)}
                             role="button"
                             aria-label={`Ir para slide ${index + 1}`}
                             tabIndex={0}
                             onKeyDown={(e) => {
                                 if (e.key === 'Enter' || e.key === ' ') {
-                                    handleManualChange(index);
+                                    handleManualImageChange(index);
                                 }
                             }}
                         ></div>
