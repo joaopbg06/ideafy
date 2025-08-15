@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import Images from '../assets/images';
 import '../styles/inicio.css';
 
@@ -68,9 +69,9 @@ export default function Inicio() {
         resetImageInterval();
     };
 
+    const navigate = useNavigate();
     const handleContinuar = () => {
-        // navigate("/login") - adicione aqui quando integrar com react-router
-        console.log("Navegando para login...");
+        navigate("/login");
     };
 
     // Ícones SVG para um visual mais profissional
