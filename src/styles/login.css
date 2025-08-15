@@ -1,0 +1,1118 @@
+/* login.css - Totalmente responsivo seguindo padrões do início */
+#Login {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: relative;
+}
+
+/* ===== TEMAS (usando variáveis do reset.css) ===== */
+.escuro-fundo-cinza {
+    background-color: var(--escuro-fundo-cinza);
+    color: #ffffff;
+}
+
+.claro-fundo-bege {
+    background-color: #ffffff;
+    color: var(--escuro-color);
+}
+
+.escuro-color {
+    color: var(--escuro-color) !important;
+}
+
+.claro-color {
+    color: #ffffff !important;
+}
+
+/* ===== TOGGLE DE TEMA ===== */
+.iconPlaceTema {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+}
+
+.temaIcon {
+    background: rgba(107, 123, 196, 0.1);
+    border: 2px solid rgba(107, 123, 196, 0.2);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.75rem;
+    border-radius: 12px;
+    transition: var(--transition-theme);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    color: var(--primary-color);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(107, 123, 196, 0.1);
+}
+
+.temaIcon:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(107, 123, 196, 0.15);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(107, 123, 196, 0.2);
+}
+
+.temaIcon:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(107, 123, 196, 0.15);
+}
+
+/* ===== CONTEÚDO DO LOGIN ===== */
+.loginContent {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    background-color: inherit;
+}
+
+/* ===== HEADER DO LOGIN ===== */
+.loginHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 400px;
+}
+
+.logoIcon {
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoIcon img {
+    max-width: 200px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(107, 123, 196, 0.1));
+}
+
+.loginTitle {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.5px;
+}
+
+.escuro-fundo-cinza .loginTitle {
+    color: var(--claro-color);
+}
+
+.claro-fundo-bege .loginTitle {
+    color: var(--escuro-color);
+}
+
+.loginSubtitle {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #777777;
+    margin: 0;
+    max-width: 350px;
+}
+
+.escuro-fundo-cinza .loginSubtitle {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.claro-fundo-bege .loginSubtitle {
+    color: rgba(34, 34, 34, 0.7);
+}
+
+/* ===== FORMULÁRIO ===== */
+.loginForm {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.inputLabel {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: inherit;
+    margin-bottom: 0.25rem;
+}
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.inputIcon {
+    position: absolute;
+    left: 1rem;
+    color: #777777;
+    z-index: 2;
+}
+
+.escuro-fundo-cinza .inputIcon {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.loginInput {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    border: 2px solid rgba(107, 123, 196, 0.2);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    background: transparent;
+    color: inherit;
+    transition: var(--transition-theme);
+    outline: none;
+}
+
+.loginInput::placeholder {
+    color: #888;
+}
+
+.escuro-fundo-cinza .loginInput {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(107, 123, 196, 0.3);
+}
+
+.escuro-fundo-cinza .loginInput::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.loginInput:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(107, 123, 196, 0.1);
+}
+
+.passwordToggle {
+    position: absolute;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #777777;
+    cursor: pointer;
+    padding: 0.25rem;
+    transition: var(--transition-theme);
+    z-index: 2;
+}
+
+.passwordToggle:hover {
+    color: var(--primary-color);
+}
+
+.escuro-fundo-cinza .passwordToggle {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.escuro-fundo-cinza .passwordToggle:hover {
+    color: var(--primary-color);
+}
+
+/* ===== BOTÃO DE LOGIN ===== */
+.loginButton {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition-theme);
+    margin-top: 0.5rem;
+}
+
+.loginButton:hover {
+    background: rgba(107, 123, 196, 0.9);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(107, 123, 196, 0.3);
+}
+
+.loginButton:active {
+    transform: translateY(0);
+}
+
+/* ===== DIVIDER ===== */
+.divider {
+    position: relative;
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(107, 123, 196, 0.2);
+    transform: translateY(-50%);
+}
+
+.dividerText {
+    background: inherit;
+    padding: 0 1rem;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* ===== BOTÕES SOCIAIS ===== */
+.socialButtons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.socialButton {
+    width: 50px;
+    height: 50px;
+    border: 2px solid rgba(107, 123, 196, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    cursor: pointer;
+    transition: var(--transition-theme);
+}
+
+.socialButton:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(107, 123, 196, 0.15);
+}
+
+.escuro-fundo-cinza .socialButton {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(107, 123, 196, 0.3);
+}
+
+.githubButton {
+    color: inherit;
+}
+
+.escuro-fundo-cinza .githubButton {
+    color: #ffffff;
+}
+
+.claro-fundo-bege .githubButton {
+    color: #333333;
+}
+
+/* ===== CARD DO PERFIL ===== */
+.profileCard {
+    width: 50%;
+    height: 100vh;
+    background: linear-gradient(135deg, 
+        rgba(107, 123, 196, 0.1) 0%, 
+        rgba(107, 123, 196, 0.2) 50%, 
+        rgba(107, 123, 196, 0.3) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.escuro-fundo-cinza .profileCard {
+    background: linear-gradient(135deg, 
+        rgba(107, 123, 196, 0.15) 0%, 
+        rgba(107, 123, 196, 0.25) 50%, 
+        rgba(107, 123, 196, 0.35) 100%);
+}
+
+.profileCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(107, 123, 196, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.profileContent {
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+}
+
+.profileContent::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 2rem;
+    bottom: 2rem;
+    width: 4px;
+    background: linear-gradient(180deg, 
+        var(--primary-color) 0%, 
+        rgba(107, 123, 196, 0.5) 50%, 
+        transparent 100%);
+    border-radius: 2px;
+}
+
+.profileHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.profileAvatar {
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+
+.avatarImage {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(107, 123, 196, 0.3);
+}
+
+.onlineStatus {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 16px;
+    height: 16px;
+    background: #10B981;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.profileInfo {
+    flex: 1;
+}
+
+.profileName {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    color: inherit;
+}
+
+.profileTime {
+    font-size: 0.85rem;
+    margin: 0.25rem 0 0 0;
+    opacity: 0.7;
+}
+
+.profileDescription {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    text-align: left;
+    opacity: 0.8;
+}
+
+.profileImage {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px rgba(107, 123, 196, 0.2);
+}
+
+.contentImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.imageOverlay {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(16, 185, 129, 0.9);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+}
+
+.profileActions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.actionButton {
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition-theme);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.likeButton,
+.commentButton {
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.likeButton:hover,
+.commentButton:hover {
+    color: var(--primary-color);
+    transform: translateY(-1px);
+}
+
+.primaryButton {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+.primaryButton:hover {
+    background: rgba(107, 123, 196, 0.9);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(107, 123, 196, 0.3);
+}
+
+.secondaryButton {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+.secondaryButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-1px);
+}
+
+/* ===== AJUSTES ESPECÍFICOS PARA TEMAS ===== */
+
+/* Tema escuro - ajustes específicos */
+.escuro-fundo-cinza .temaIcon {
+    background: rgba(107, 123, 196, 0.15);
+    border-color: rgba(107, 123, 196, 0.3);
+}
+
+.escuro-fundo-cinza .temaIcon:hover {
+    background: rgba(107, 123, 196, 0.25);
+    border-color: var(--primary-color);
+}
+
+/* Tema claro - ajustes específicos */
+.claro-fundo-bege .temaIcon {
+    background: rgba(107, 123, 196, 0.08);
+    border-color: rgba(107, 123, 196, 0.2);
+    color: var(--primary-color);
+}
+
+.claro-fundo-bege .temaIcon:hover {
+    background: rgba(107, 123, 196, 0.15);
+    border-color: var(--primary-color);
+}
+/* ADICIONAR ESTAS LINHAS: */
+.claro-fundo-bege .profileCard {
+    color: #333333;
+}
+
+.claro-fundo-bege .profileCard .profileName,
+.claro-fundo-bege .profileCard .profileTime,
+.claro-fundo-bege .profileCard .profileDescription {
+    color: #333333;
+}
+
+/* Para os botões também ficarem escuros no tema claro */
+.claro-fundo-bege .likeButton,
+.claro-fundo-bege .commentButton {
+    color: #333333;
+}
+
+.claro-fundo-bege .likeButton:hover,
+.claro-fundo-bege .commentButton:hover {
+    color: var(--primary-color);
+}
+/* ADICIONAR ESTA LINHA: */
+.claro-fundo-bege .secondaryButton {
+    color: #333333;
+    border-color: rgba(51, 51, 51, 0.3);
+}
+
+.claro-fundo-bege .secondaryButton:hover {
+    background: rgba(51, 51, 51, 0.1);
+    border-color: rgba(51, 51, 51, 0.5);
+    color: #333333;
+}
+/* ===== RESPONSIVIDADE COMPLETA ===== */
+
+/* Desktop grande (1440px+) */
+@media (min-width: 1440px) {
+    .loginContent {
+        padding: 4rem 3rem;
+    }
+    
+    .logoIcon img {
+        max-width: 220px;
+        max-height: 220px;
+    }
+    
+    .loginTitle {
+        font-size: 3rem;
+    }
+    
+    .loginSubtitle {
+        font-size: 1rem;
+        max-width: 380px;
+    }
+    
+    .loginForm {
+        max-width: 450px;
+    }
+    
+    .loginInput {
+        padding: 1.1rem 1.1rem 1.1rem 3.2rem;
+        font-size: 1rem;
+    }
+    
+    .loginButton {
+        padding: 1.2rem 2.5rem;
+        font-size: 1.1rem;
+    }
+    
+    .temaIcon {
+        width: 52px;
+        height: 52px;
+        font-size: 1.2rem;
+    }
+    
+    .profileContent {
+        max-width: 450px;
+        padding: 2.5rem;
+    }
+    
+    .profileImage {
+        height: 250px;
+    }
+}
+
+/* Laptops (1024px - 1439px) */
+@media (max-width: 1439px) and (min-width: 1024px) {
+    .logoIcon img {
+        max-width: 180px;
+        max-height: 180px;
+    }
+    
+    .loginTitle {
+        font-size: 2.8rem;
+    }
+    
+    .temaIcon {
+        width: 46px;
+        height: 46px;
+    }
+}
+
+/* Tablets (768px - 1023px) */
+@media (max-width: 1023px) {
+    #Login {
+        flex-direction: column;
+    }
+    
+    .loginContent {
+        width: 100%;
+        height: 60vh;
+        padding: 2rem 1.5rem;
+    }
+    
+    .profileCard {
+        width: 100%;
+        height: 40vh;
+        padding: 1.5rem;
+    }
+    
+    .loginHeader {
+        margin-bottom: 2rem;
+    }
+    
+    .logoIcon img {
+        max-width: 160px;
+        max-height: 160px;
+    }
+    
+    .loginTitle {
+        font-size: 2.6rem;
+    }
+    
+    .loginSubtitle {
+        font-size: 0.9rem;
+    }
+    
+    .loginForm {
+        max-width: 350px;
+    }
+    
+    .iconPlaceTema {
+        top: 1.5rem;
+        right: 1.5rem;
+    }
+    
+    .temaIcon {
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
+    }
+    
+    .profileContent {
+        max-width: 350px;
+    }
+    
+    .profileImage {
+        height: 150px;
+    }
+}
+
+/* Smartphones (481px - 767px) */
+@media (max-width: 767px) {
+    #Login {
+        flex-direction: column;
+    }
+    
+    .loginContent {
+        width: 100%;
+        height: 100vh;
+        padding: 1.5rem 1rem;
+    }
+    
+    .profileCard {
+        display: none;
+    }
+    
+    .loginHeader {
+        margin-bottom: 2rem;
+    }
+    
+    .logoIcon img {
+        max-width: 140px;
+        max-height: 140px;
+    }
+    
+    .loginTitle {
+        font-size: 2.2rem;
+    }
+    
+    .loginSubtitle {
+        font-size: 0.85rem;
+        max-width: 300px;
+    }
+    
+    .loginForm {
+        max-width: 350px;
+        gap: 1.25rem;
+        width: 100%;
+    }
+    
+    .loginInput {
+        padding: 0.9rem 0.9rem 0.9rem 2.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .loginButton {
+        padding: 0.9rem 2rem;
+        font-size: 0.9rem;
+    }
+    
+    .socialButton {
+        width: 46px;
+        height: 46px;
+    }
+    
+    .iconPlaceTema {
+        top: 1rem;
+        right: 1rem;
+    }
+    
+    .temaIcon {
+        width: 42px;
+        height: 42px;
+        font-size: 0.95rem;
+        padding: 0.6rem;
+    }
+}
+
+/* Smartphones pequenos (até 480px) */
+@media (max-width: 480px) {
+    .loginContent {
+        padding: 1rem 0.8rem;
+        height: 100vh;
+    }
+    
+    .profileCard {
+        display: none;
+    }
+    
+    .loginHeader {
+        margin-bottom: 1.5rem;
+    }
+    
+    .logoIcon img {
+        max-width: 120px;
+        max-height: 120px;
+    }
+    
+    .loginTitle {
+        font-size: 1.8rem;
+    }
+    
+    .loginSubtitle {
+        font-size: 0.8rem;
+        max-width: 280px;
+    }
+    
+    .loginForm {
+        max-width: 320px;
+        gap: 1rem;
+        width: 100%;
+    }
+    
+    .loginInput {
+        padding: 0.8rem 0.8rem 0.8rem 2.6rem;
+        font-size: 0.85rem;
+    }
+    
+    .loginButton {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.85rem;
+    }
+    
+    .socialButton {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .socialButtons {
+        gap: 0.8rem;
+    }
+    
+    .temaIcon {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+        border-radius: 10px;
+    }
+    
+    .divider {
+        margin: 1.25rem 0;
+    }
+}
+
+/* Smartphones muito pequenos (até 360px) */
+@media (max-width: 360px) {
+    .loginContent {
+        padding: 0.8rem 0.6rem;
+        height: 100vh;
+    }
+    
+    .profileCard {
+        display: none;
+    }
+    
+    .logoIcon img {
+        max-width: 100px;
+        max-height: 100px;
+    }
+    
+    .loginTitle {
+        font-size: 1.6rem;
+    }
+    
+    .loginSubtitle {
+        font-size: 0.75rem;
+        max-width: 260px;
+    }
+    
+    .loginForm {
+        max-width: 300px;
+        width: 100%;
+    }
+    
+    .loginInput {
+        padding: 0.7rem 0.7rem 0.7rem 2.4rem;
+        font-size: 0.8rem;
+    }
+    
+    .loginButton {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .socialButton {
+        width: 42px;
+        height: 42px;
+    }
+    
+    .iconPlaceTema {
+        top: 0.8rem;
+        right: 0.8rem;
+    }
+    
+    .temaIcon {
+        width: 36px;
+        height: 36px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Modo paisagem em dispositivos móveis */
+@media (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
+    #Login {
+        flex-direction: row;
+        height: 100vh;
+    }
+    
+    .loginContent {
+        width: 60%;
+        height: 100vh;
+        padding: 1rem 0.8rem;
+    }
+    
+    .profileCard {
+        width: 40%;
+        height: 100vh;
+        display: flex;
+        padding: 1rem;
+    }
+    
+    .loginHeader {
+        margin-bottom: 1rem;
+    }
+    
+    .logoIcon img {
+        max-width: 60px;
+        max-height: 60px;
+    }
+    
+    .loginTitle {
+        font-size: 1.6rem;
+    }
+    
+    .loginSubtitle {
+        font-size: 0.75rem;
+        max-width: 250px;
+    }
+    
+    .loginForm {
+        gap: 0.8rem;
+        max-width: 280px;
+    }
+    
+    .loginInput {
+        padding: 0.6rem 0.6rem 0.6rem 2.2rem;
+        font-size: 0.8rem;
+    }
+    
+    .loginButton {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+    }
+    
+    .socialButton {
+        width: 38px;
+        height: 38px;
+    }
+    
+    .socialButtons {
+        gap: 0.6rem;
+    }
+    
+    .divider {
+        margin: 0.8rem 0;
+    }
+    
+    .profileContent {
+        max-width: 200px;
+        padding: 1rem;
+    }
+    
+    .profileImage {
+        height: 100px;
+        margin-bottom: 1rem;
+    }
+    
+    .profileHeader {
+        margin-bottom: 0.8rem;
+    }
+    
+    .profileDescription {
+        font-size: 0.75rem;
+        margin-bottom: 1rem;
+    }
+    
+    .profileActions {
+        gap: 0.5rem;
+    }
+    
+    .primaryButton,
+    .secondaryButton {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.7rem;
+    }
+    
+    .likeButton,
+    .commentButton {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .iconPlaceTema {
+        top: 0.8rem;
+        right: 0.8rem;
+    }
+    
+    .temaIcon {
+        width: 36px;
+        height: 36px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Tablets em modo paisagem */
+@media (min-width: 769px) and (max-width: 1023px) and (orientation: landscape) {
+    .loginContent {
+        height: 55vh;
+        padding: 1.5rem;
+    }
+    
+    .profileCard {
+        height: 45vh;
+        padding: 1.5rem;
+    }
+    
+    .logoIcon img {
+        max-width: 90px;
+        max-height: 90px;
+    }
+    
+    .loginTitle {
+        font-size: 2.4rem;
+    }
+}
+
+/* Ajustes para telas ultrawide */
+@media (min-width: 1920px) {
+    .loginContent {
+        max-width: 50%;
+        padding: 5rem 4rem;
+    }
+    
+    .logoIcon img {
+        max-width: 160px;
+        max-height: 160px;
+    }
+    
+    .loginTitle {
+        font-size: 4.2rem;
+    }
+    
+    .loginSubtitle {
+        font-size: 1.2rem;
+        max-width: 420px;
+    }
+    
+    .loginForm {
+        max-width: 500px;
+    }
+    
+    .loginInput {
+        padding: 1.3rem 1.3rem 1.3rem 3.5rem;
+        font-size: 1.1rem;
+    }
+    
+    .loginButton {
+        padding: 1.3rem 3rem;
+        font-size: 1.2rem;
+    }
+    
+    .temaIcon {
+        width: 56px;
+        height: 56px;
+        font-size: 1.3rem;
+    }
+    
+    .profileContent {
+        max-width: 450px;
+        padding: 4rem;
+    }
+    
+    .profileImage {
+        height: 280px;
+    }
+}
+
+/* Melhorias para acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .loginInput,
+    .loginButton,
+    .socialButton,
+    .actionButton,
+    .temaIcon {
+        transition: none;
+    }
+}
+
+/* Suporte para prefers-color-scheme */
+@media (prefers-color-scheme: dark) {
+    #Login:not(.claro-fundo-bege) {
+        background-color: var(--escuro-fundo-cinza);
+        color: var(--claro-color);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    #Login:not(.escuro-fundo-cinza) {
+        background-color: var(--claro-fundo-bege);
+        color: var(--escuro-color);
+    }
+}
