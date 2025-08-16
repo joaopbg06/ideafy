@@ -30,7 +30,7 @@ export default function Login() {
   };
 
   const handleGoToRegister = () => {
-    navigate("/register");
+    navigate("/cadastro");
   };
 
   // Ícones SVG
