@@ -18,10 +18,11 @@ export default function Login() {
     // e.preventDefault();
     // // Lógica de login aqui
     // console.log("Login attempt:", { email, password });
+    navigate('/feed');
   };
 
   const handleSocialLogin = (provider) => {
-    console.log(`Login with ${provider}`);
+    // console.log(`Login with ${provider}`);
   };
 
   const handleGoBack = () => {

@@ -16,7 +16,7 @@
     /* Cores principais */
     --primary-color: rgba(107, 123, 196, 1);
     --black-color: rgba(34, 34, 34, 1);
-    --back-alternative: rgba(32, 32, 32, 1);
+    --black-alternative: rgba(32, 32, 32, 1);
     
     /* Sistema de cores para tema claro */
     --claro-fundo-bege: #ffffff;
