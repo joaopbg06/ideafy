@@ -1,24 +1,53 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Images from "../assets/images";
-import "../styles/login.css";
+import "../styles/register.css";
 
-export default function Login() {
+export default function Register() {
   const [tema, setTema] = useState("escuro");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [currentStep, setCurrentStep] = useState(1);
+  const [totalSteps] = useState(4);
   const navigate = useNavigate();
 
   const toggleIcon = () => {
     setTema((prev) => (prev === "escuro" ? "claro" : "escuro"));
   };
 
-  const handleSubmit = (e) => {
-    // e.preventDefault();
-    // // Lógica de login aqui
-    // console.log("Login attempt:", { email, password });
-  };
+const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    if (currentStep < totalSteps) {
+        // Validações por step
+        if (currentStep === 1 && !username.trim()) {
+            alert('Por favor, digite um nome de usuário');
+            return;
+        }
+        if (currentStep === 2 && !email.trim()) {
+            alert('Por favor, digite um email válido');
+            return;
+        }
+        if (currentStep === 3 && !password.trim()) {
+            alert('Por favor, digite uma senha');
+            return;
+        }
+        
+        setCurrentStep(currentStep + 1);
+    } else {
+        // Última etapa - validação final e envio
+        if (password !== confirmPassword) {
+            alert('As senhas não coincidem');
+            return;
+        }
+        
+        // Lógica de registro aqui
+        console.log("Register attempt:", { email, username, password });
+        }
+    };
 
   const handleSocialLogin = (provider) => {
     console.log(`Login with ${provider}`);
@@ -28,9 +57,12 @@ export default function Login() {
     navigate("/");
   };
 
-  const handleGoToRegister = () => {
-    navigate("/register");
-  };
+
+  const handlePreviousStep = () => {
+    if (currentStep > 1) {
+        setCurrentStep(currentStep - 1);
+    }
+};
 
   // Ícones SVG
   const SunIcon = () => (
@@ -163,90 +195,149 @@ export default function Login() {
           <div className="logoIcon">
             <img src={Images.Logo} alt="Logo Ideafy" loading="eager" />
           </div>
-          <h1 className="loginTitle">Login</h1>
+          <h1 className="loginTitle">Cadastro</h1>
           <p className="loginSubtitle">
-            Bem-vindo de volta ao Ideiafy. Suas ideias têm o poder de transformar o mundo!
+            Junte-se ao Ideiafy e dê vida às suas ideias. Aqui, cada pensamento pode se tornar realidade!
           </p>
         </div>
 
         <form className="loginForm" onSubmit={handleSubmit}>
-          <div className="inputGroup">
-            <label htmlFor="email" className="inputLabel">
-              Email
-            </label>
+    {/* Indicador de progresso */}
+    <div className="stepIndicator">
+        <div className="stepProgress">
+            <div 
+                className="stepProgressBar" 
+                style={{ width: `${(currentStep / totalSteps) * 100}%` }}
+            ></div>
+        </div>
+        <span className="stepText">Etapa {currentStep} de {totalSteps}</span>
+    </div>
+
+    {/* Step 1 - Username */}
+    {currentStep === 1 && (
+        <div className="inputGroup">
+            <label htmlFor="username" className="inputLabel">Nome de usuário</label>
             <div className="inputWrapper">
-              <svg
-                className="inputIcon"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-              <input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="teste@gmail.com"
-                className="loginInput"
-                required
-              />
+                <svg className="inputIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+                <input
+                    id="username"
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Digite seu nome de usuário"
+                    className="loginInput"
+                    autoFocus
+                    required
+                />
             </div>
-          </div>
+        </div>
+    )}
 
-          <div className="inputGroup">
-            <label htmlFor="password" className="inputLabel">
-              Password
-            </label>
+    {/* Step 2 - Email */}
+    {currentStep === 2 && (
+        <div className="inputGroup">
+            <label htmlFor="email" className="inputLabel">Email</label>
             <div className="inputWrapper">
-              <svg
-                className="inputIcon"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                <circle cx="12" cy="16" r="1" />
-                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-              </svg>
-              <input
-                id="password"
-                type={showPassword ? "text" : "password"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="loginInput"
-                required
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="passwordToggle"
-                aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
-              >
-                {showPassword ? <EyeOffIcon /> : <EyeIcon />}
-              </button>
+                <svg className="inputIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                <input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="seu@email.com"
+                    className="loginInput"
+                    autoFocus
+                    required
+                />
             </div>
-          </div>
+        </div>
+    )}
 
-          <button type="submit" className="loginButton">
-            Entrar
-          </button>
+    {/* Step 3 - Password */}
+    {currentStep === 3 && (
+        <div className="inputGroup">
+            <label htmlFor="password" className="inputLabel">Senha</label>
+            <div className="inputWrapper">
+                <svg className="inputIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <circle cx="12" cy="16" r="1"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+                <input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="••••••••"
+                    className="loginInput"
+                    autoFocus
+                    required
+                />
+                <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="passwordToggle"
+                    aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
+                >
+                    {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+                </button>
+            </div>
+        </div>
+    )}
 
-          <div className="divider">
-            <span className="dividerText">ou</span>
-          </div>
+    {/* Step 4 - Confirm Password */}
+    {currentStep === 4 && (
+        <div className="inputGroup">
+            <label htmlFor="confirmPassword" className="inputLabel">Confirmar Senha</label>
+            <div className="inputWrapper">
+                <svg className="inputIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <circle cx="12" cy="16" r="1"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+                <input
+                    id="confirmPassword"
+                    type="password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    placeholder="••••••••"
+                    className="loginInput"
+                    autoFocus
+                    required
+                />
+            </div>
+        </div>
+    )}
 
-          <div className="socialButtons">
-            <button
+    {/* Botões de navegação */}
+    <div className="stepButtons">
+        {currentStep > 1 && (
+            <button 
+                type="button" 
+                onClick={handlePreviousStep}
+                className="stepButton secondaryButton"
+            >
+                Voltar
+            </button>
+        )}
+        <button type="submit" className="stepButton loginButton">
+            {currentStep === totalSteps ? 'Cadastrar' : 'Próximo'}
+        </button>
+    </div>
+
+    {/* Resto do conteúdo - divider, social buttons, etc. permanece igual */}
+    <div className="divider">
+        <span className="dividerText">ou</span>
+    </div>
+
+    <div className="socialButtons">
+        <button
               type="button"
               onClick={() => handleSocialLogin("google")}
               className="socialButton googleButton"
@@ -270,18 +361,17 @@ export default function Login() {
             >
               <GitHubIcon />
             </button>
-          </div>
+    </div>
 
-          {/* Link para cadastro */}
-          <div className="registerLink">
-            <p className="registerText">
-              Não tem uma conta?
-              <button onClick={handleGoToRegister} className="registerButton">
-                Cadastre-se aqui
-              </button>
-            </p>
-          </div>
-        </form>
+    <div className="registerLink">
+        <p className="registerText">
+            Já tem uma conta? 
+            <button onClick={() => navigate('/login')} className="registerButton">
+                Faça login
+            </button>
+        </p>
+    </div>
+</form>
       </div>
 
       {/* Card lateral */}
