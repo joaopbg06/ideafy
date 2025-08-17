@@ -1,0 +1,326 @@
+/* mobile-header.css - Estilos para o componente MobileHeader */
+
+.mobileHeader {
+    display: none;
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(107, 123, 196, 0.2);
+    transition: var(--transition-theme);
+}
+
+/* NOVA CLASSE PARA APLICAR ESPAÇAMENTO NO BODY/MAIN */
+.mobile-header-active {
+    padding-top: 70px !important;
+}
+
+/* Temas do header */
+.escuro-fundo-cinza .mobileHeader {
+    background: rgba(42, 42, 42, 0.95);
+    border-bottom-color: rgba(107, 123, 196, 0.3);
+}
+
+.claro-fundo-bege .mobileHeader {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom-color: rgba(107, 123, 196, 0.15);
+}
+
+/* Conteúdo do header */
+.mobileHeaderContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Lados do header */
+.mobileHeaderLeft,
+.mobileHeaderRight {
+    display: flex;
+    align-items: center;
+    min-width: 44px;
+}
+
+.mobileHeaderLeft {
+    justify-content: flex-start;
+}
+
+.mobileHeaderRight {
+    justify-content: flex-end;
+}
+
+/* Centro do header (quando há botão de voltar) */
+.mobileHeaderCenter {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 200px;
+    text-align: center;
+}
+
+.mobileHeaderTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    color: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Logo Mobile */
+.mobileLogo {
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.mobileLogoText {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: inherit;
+    letter-spacing: -0.5px;
+}
+
+.mobileLogoBlue {
+    color: var(--primary-color);
+}
+
+/* Botão de voltar */
+.mobileBackButton {
+    width: 44px;
+    height: 44px;
+    background: rgba(107, 123, 196, 0.1);
+    border: 2px solid rgba(107, 123, 196, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-theme);
+    color: var(--primary-color);
+}
+
+.mobileBackButton:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(107, 123, 196, 0.15);
+    transform: translateY(-1px);
+}
+
+.escuro-fundo-cinza .mobileBackButton {
+    background: rgba(107, 123, 196, 0.15);
+    border-color: rgba(107, 123, 196, 0.3);
+}
+
+/* Botão de tema */
+.mobileTemaIcon {
+    width: 44px;
+    height: 44px;
+    background: rgba(107, 123, 196, 0.1);
+    border: 2px solid rgba(107, 123, 196, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-theme);
+    color: var(--primary-color);
+}
+
+.mobileTemaIcon:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(107, 123, 196, 0.15);
+    transform: translateY(-1px);
+}
+
+.escuro-fundo-cinza .mobileTemaIcon {
+    background: rgba(107, 123, 196, 0.15);
+    border-color: rgba(107, 123, 196, 0.3);
+}
+
+/* Variações do header */
+.mobileHeader.transparent {
+    background: transparent;
+    border-bottom: none;
+    backdrop-filter: none;
+}
+
+.mobileHeader.solid {
+    backdrop-filter: none;
+}
+
+.escuro-fundo-cinza .mobileHeader.solid {
+    background: var(--escuro-fundo-cinza);
+}
+
+.claro-fundo-bege .mobileHeader.solid {
+    background: #ffffff;
+}
+
+/* Responsividade */
+@media (max-width: 767px) {
+    .mobileHeader {
+        display: block;
+    }
+    
+    /* ESPAÇAMENTO AUTOMÁTICO PARA O CONTEÚDO PRINCIPAL */
+    .modern-main,
+    .main-content,
+    .page-content,
+    .content-wrapper,
+    .app-content {
+        padding-top: 85px !important; /* 70px do header + 15px de margem */
+        margin-left: 0 !important;
+    }
+    
+    /* ESPAÇAMENTO ADICIONAL PARA O BOTTOM NAV DA SIDEBAR */
+    body {
+        padding-bottom: 85px !important; /* 70px da sidebar + 15px de margem */
+    }
+}
+
+@media (max-width: 480px) {
+    .mobileHeaderContent {
+        padding: 0 1rem;
+    }
+
+    .mobileLogoText {
+        font-size: 1.6rem;
+    }
+
+    .mobileTemaIcon,
+    .mobileBackButton {
+        width: 40px;
+        height: 40px;
+    }
+
+    .mobileHeaderTitle {
+        font-size: 1rem;
+    }
+    
+    /* AJUSTE DO ESPAÇAMENTO EM TELAS MENORES */
+    .modern-main,
+    .main-content,
+    .page-content,
+    .content-wrapper,
+    .app-content {
+        padding-top: 80px !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .mobileHeaderContent {
+        padding: 0 0.8rem;
+    }
+
+    .mobileLogoText {
+        font-size: 1.4rem;
+    }
+
+    .mobileTemaIcon,
+    .mobileBackButton {
+        width: 36px;
+        height: 36px;
+    }
+
+    .mobileHeaderTitle {
+        font-size: 0.9rem;
+        max-width: 150px;
+    }
+    
+    /* AJUSTE DO ESPAÇAMENTO EM TELAS MUITO PEQUENAS */
+    .modern-main,
+    .main-content,
+    .page-content,
+    .content-wrapper,
+    .app-content {
+        padding-top: 75px !important;
+    }
+}
+
+/* Modo paisagem em dispositivos móveis */
+@media (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
+    .mobileHeader {
+        height: 60px;
+    }
+
+    .mobileHeaderContent {
+        padding: 0 1rem;
+    }
+
+    .mobileLogoText {
+        font-size: 1.4rem;
+    }
+
+    .mobileTemaIcon,
+    .mobileBackButton {
+        width: 40px;
+        height: 40px;
+    }
+    
+    /* AJUSTE PARA MODO PAISAGEM */
+    .mobile-header-active {
+        padding-top: 60px !important;
+    }
+    
+    .modern-main,
+    .main-content,
+    .page-content,
+    .content-wrapper,
+    .app-content {
+        padding-top: 75px !important; /* 60px + 15px */
+        padding-left: 75px !important; /* Para a sidebar que volta ao lado */
+        margin-left: 0 !important;
+    }
+    
+    body {
+        padding-bottom: 0 !important; /* Remove padding bottom no paisagem */
+    }
+}
+
+/* Animações e transições */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.mobileHeader.animated {
+    animation: slideDown 0.3s ease-out;
+}
+
+/* Estados especiais */
+.mobileHeader.scrolled {
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.escuro-fundo-cinza .mobileHeader.scrolled {
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Melhorias para acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .mobileTemaIcon,
+    .mobileBackButton,
+    .mobileHeader {
+        transition: none;
+    }
+    
+    .mobileHeader.animated {
+        animation: none;
+    }
+}

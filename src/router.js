@@ -4,6 +4,7 @@ import Inicio from "./pages/inicio.js";
 import Login from "./pages/login.js";
 import Register from "./pages/register.js";
 import Feed from "./pages/feed.js";
+import Conta from "./pages/conta.js";
 
 export default function AppRoutes() {
 
@@ -16,6 +17,7 @@ export default function AppRoutes() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/cadastro" element={<Register />} />
                     <Route path="/feed" element={<Feed />} />
+                    <Route path="/conta" element={<Conta />} />
                 </Routes>
             </div>
         </>
