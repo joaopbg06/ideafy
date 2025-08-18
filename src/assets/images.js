@@ -11,7 +11,8 @@ import DeskCard from './images/DeskCard.png';
 import MobiCard from './images/MobiCard.png';
 import PhotoCard from './images/PhotoCard.png';
 
-
+// Desenvolvimento
+import Mascote from '../assets/images/mascote.png'
 
 const images = {
 
@@ -22,7 +23,10 @@ const images = {
     Banner1,Banner2,Banner3,
 
     // Login e Registro
-    DeskCard,MobiCard,PhotoCard
+    DeskCard,MobiCard,PhotoCard,
+
+    // Desenvolvimento
+    Mascote
 }
 
 export default images;

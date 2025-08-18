@@ -1,0 +1,618 @@
+/* paginaDesenvolvimento.css - Tela de Desenvolvimento */
+#PaginaDesenvolvimento {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ===== TEMAS ===== */
+.escuro-fundo-cinza {
+    background-color: var(--escuro-fundo-cinza);
+    color: #ffffff;
+}
+
+.claro-fundo-bege {
+    background-color: #ffffff;
+    color: var(--escuro-color);
+}
+
+/* ===== CONTEÚDO PRINCIPAL ===== */
+.developmentContent {
+    flex: 1;
+    margin-left: 100px;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+.developmentContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    margin-bottom: 4rem;
+}
+
+/* ===== SEÇÃO DO MASCOTE ===== */
+.mascotSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.mascotImageContainer {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mascotImage {
+    width: 100%;
+    height: auto;
+    max-width: 350px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 60px rgba(107, 123, 196, 0.3));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ===== SEÇÃO DO CONTEÚDO ===== */
+.contentSection {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.developmentHeader {
+    margin-bottom: 1rem;
+}
+
+.BadgeStatus {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, 
+        rgba(255, 193, 7, 0.15) 0%, 
+        rgba(255, 152, 0, 0.15) 100%);
+    border: 2px solid rgba(255, 193, 7, 0.3);
+    border-radius: 50px;
+    color: #FF8C00;
+    font-weight: 600;
+    font-size: 0.95rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(255, 193, 7, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.BadgeStatus::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.2), 
+        transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.escuro-fundo-cinza .BadgeStatus {
+    background: linear-gradient(135deg, 
+        rgba(255, 193, 7, 0.2) 0%, 
+        rgba(255, 152, 0, 0.2) 100%);
+    border-color: rgba(255, 193, 7, 0.4);
+    color: #FFD700;
+}
+
+.developmentText {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.mainTitle {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: inherit;
+    margin: 0;
+    background: linear-gradient(135deg, 
+        var(--primary-color) 0%, 
+        rgba(107, 123, 196, 0.8) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.subtitle {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: inherit;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.thankYouMessage {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(107, 123, 196, 0.1);
+    border: 1px solid rgba(107, 123, 196, 0.2);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    margin: 1rem 0;
+}
+
+.thankYouMessage svg {
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.thankYouMessage p {
+    margin: 0;
+    font-weight: 500;
+    color: inherit;
+}
+
+.escuro-fundo-cinza .thankYouMessage {
+    background: rgba(107, 123, 196, 0.15);
+    border-color: rgba(107, 123, 196, 0.3);
+}
+
+/* ===== AÇÕES ===== */
+.developmentActions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.primaryBtn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition-theme);
+    box-shadow: 0 4px 20px rgba(107, 123, 196, 0.3);
+}
+
+.primaryBtn:hover {
+    background: rgba(107, 123, 196, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(107, 123, 196, 0.4);
+}
+
+.secondaryBtn {
+    background: transparent;
+    color: inherit;
+    border: 2px solid rgba(107, 123, 196, 0.3);
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition-theme);
+}
+
+.secondaryBtn:hover {
+    background: rgba(107, 123, 196, 0.1);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.escuro-fundo-cinza .secondaryBtn {
+    border-color: rgba(107, 123, 196, 0.4);
+}
+
+/* ===== BARRA DE PROGRESSO ===== */
+.progressSection {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(107, 123, 196, 0.05);
+    border-radius: 16px;
+    border: 1px solid rgba(107, 123, 196, 0.1);
+}
+
+.progressLabel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.progressLabel span:last-child {
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.progressBar {
+    width: 100%;
+    height: 12px;
+    background: rgba(107, 123, 196, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progressFill {
+    height: 100%;
+    background: linear-gradient(90deg, 
+        var(--primary-color) 0%, 
+        rgba(107, 123, 196, 0.8) 100%);
+    border-radius: 6px;
+    transition: width 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.progressFill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.3) 50%, 
+        transparent 100%);
+    animation: progressShine 2s infinite;
+}
+
+@keyframes progressShine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.escuro-fundo-cinza .progressSection {
+    background: rgba(107, 123, 196, 0.1);
+    border-color: rgba(107, 123, 196, 0.2);
+}
+
+.escuro-fundo-cinza .progressBar {
+    background: rgba(107, 123, 196, 0.2);
+}
+
+/* ===== PREVIEW DAS FUNCIONALIDADES ===== */
+.featuresPreview {
+    max-width: 1200px;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.featuresPreview h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: inherit;
+    position: relative;
+}
+
+.featuresPreview h3::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+.featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.featureCard {
+    background: transparent;
+    border: 1px solid rgba(107, 123, 196, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: var(--transition-theme);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.featureCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        var(--primary-color) 0%, 
+        rgba(107, 123, 196, 0.5) 100%);
+}
+
+.featureCard:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+    box-shadow: 0 15px 40px rgba(107, 123, 196, 0.2);
+}
+
+.featureIcon {
+    width: 60px;
+    height: 60px;
+    background: rgba(107, 123, 196, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+    color: var(--primary-color);
+    transition: var(--transition-theme);
+}
+
+.featureCard:hover .featureIcon {
+    background: rgba(107, 123, 196, 0.2);
+    transform: scale(1.1);
+}
+
+.featureCard h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    color: inherit;
+}
+
+.featureCard p {
+    font-size: 0.9rem;
+    color: inherit;
+    opacity: 0.7;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.escuro-fundo-cinza .featureCard {
+    border-color: rgba(107, 123, 196, 0.3);
+}
+
+.escuro-fundo-cinza .featureIcon {
+    background: rgba(107, 123, 196, 0.15);
+}
+
+.escuro-fundo-cinza .featureCard:hover .featureIcon {
+    background: rgba(107, 123, 196, 0.25);
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+/* Tablets (768px - 1023px) */
+@media (max-width: 1023px) {
+    .developmentContent {
+        margin-left: 80px;
+    }
+
+    .developmentContainer {
+        gap: 3rem;
+        max-width: 900px;
+    }
+
+    .mainTitle {
+        font-size: 2rem;
+    }
+
+    .mascotImage {
+        max-width: 300px;
+    }
+}
+
+/* Smartphones (até 767px) */
+@media (max-width: 767px) {
+    .developmentContent {
+        margin-left: 0;
+        margin-top: 70px;
+        margin-bottom: 70px;
+        padding: 1rem;
+    }
+
+    .developmentContainer {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .mascotSection {
+        order: 1;
+        margin-top: 2rem; /* Adicionar esta linha */
+    }
+
+    .contentSection {
+        order: 2;
+    }
+
+    .mainTitle {
+        font-size: 1.6rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .developmentActions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .primaryBtn,
+    .secondaryBtn {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .featuresGrid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .featureCard {
+        padding: 1.5rem;
+    }
+
+    .mascotImage {
+        max-width: 250px;
+    }
+}
+
+/* Smartphones pequenos (até 480px) */
+@media (max-width: 480px) {
+    .developmentContent {
+        padding: 0.8rem;
+    }
+
+    .developmentContainer {
+        gap: 1.5rem;
+    }
+
+    .BadgeStatus {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.85rem;
+        gap: 0.6rem;
+    }
+
+    .mainTitle {
+        font-size: 1.4rem;
+    }
+
+    .subtitle {
+        font-size: 0.95rem;
+    }
+
+    .thankYouMessage {
+        padding: 1.2rem;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .progressSection {
+        padding: 1.2rem;
+    }
+
+    .featuresPreview h3 {
+        font-size: 1.3rem;
+    }
+
+    .featureCard {
+        padding: 1.2rem;
+    }
+
+    .featureIcon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 1rem;
+    }
+
+    .mascotImage {
+        max-width: 200px;
+    }
+    .mascotSection {
+        margin-top: 1.5rem;
+    }
+}
+
+/* Modo paisagem em dispositivos móveis */
+@media (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
+    .developmentContent {
+        margin-left: 60px;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 1rem;
+    }
+
+    .developmentContainer {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        max-height: calc(100vh - 2rem);
+        overflow-y: auto;
+    }
+
+    .featuresPreview {
+        margin-top: 1rem;
+    }
+
+    .featuresGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .mascotImage {
+        max-width: 200px;
+    }
+}
+
+/* Ajustes para telas ultrawide */
+@media (min-width: 1920px) {
+    .developmentContent {
+        margin-left: 110px;
+    }
+
+    .developmentContainer {
+        max-width: 1400px;
+        gap: 5rem;
+    }
+
+    .mainTitle {
+        font-size: 2.5rem;
+    }
+
+    .mascotImage {
+        max-width: 450px;
+    }
+}
+
+/* Melhorias para acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .mascotImage,
+    .BadgeStatus::before,
+    .progressFill::after,
+    .primaryBtn,
+    .secondaryBtn,
+    .featureCard,
+    .featureIcon {
+        animation: none;
+        transition: none;
+    }
+}

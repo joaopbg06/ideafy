@@ -81,22 +81,19 @@ export default function Sidebar({ tema, toggleTema, onSearchModal, activeItem = 
     // Navegação baseada nas suas rotas
     switch(item) {
       case 'home':
-        navigate('/feed'); // assumindo que o feed é a página inicial após login
+        navigate('/feed');
         break;
       case 'notifications':
-        // navigate('/notificacoes'); // quando criar a página
-        console.log('Página de notificações ainda não criada');
+        navigate('/notificacoes');
         break;
       case 'messages':
-        // navigate('/mensagens'); // quando criar a página
-        console.log('Página de mensagens ainda não criada');
+        navigate('/mensagens'); 
         break;
       case 'account':
         navigate('/conta');
         break;
       case 'settings':
-        // navigate('/configuracoes'); // quando criar a página
-        console.log('Página de configurações ainda não criada');
+        navigate('/configuracoes'); 
         break;
       default:
         break;
