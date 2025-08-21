@@ -1,0 +1,65 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+use App\Models\UserModel;
+use Illuminate\Support\Facades\Hash;
+
+class UserController extends Controller
+{
+
+    public function index(int  $id)
+    {
+        $user = UserModel::find($id);
+
+        if(!$user)
+        {
+            return response()->json("user not found");
+        }
+        
+        return response()->json($user);
+    }
+
+    public function store(UserRequest $request)
+    {
+
+      $request['password'] = Hash::make($request['password']);
+
+      UserModel::create($request->all());
+      return response()->json("user registered");
+    }
+
+    public function update(int $id,UserRequest $request )
+    {
+        $data = $request->all();
+
+        $user = UserModel::find($id);
+
+        if(!$user)
+        {
+            return response()->json("user not found");
+        }
+
+        $user->update($data);
+        return response()->json($user);
+
+    }
+
+    public function destroy(int $id)
+    {
+       $user = UserModel::find($id);
+
+        if($user)
+        {
+            $user->delete();
+            return response()->json("user deleted");
+
+        } 
+
+        return response()->json("user not found");
+    }
+
+
+}
