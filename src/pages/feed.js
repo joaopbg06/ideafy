@@ -11,6 +11,9 @@ export default function Feed() {
   const [lightboxImage, setLightboxImage] = useState(null);
   const textareaRef = useRef(null);
   const [activeNavItem, setActiveNavItem] = useState("home");
+  const [commentModal, setCommentModal] = useState({ isOpen: false, postId: null });
+  const [comments, setComments] = useState({});
+  const [newComment, setNewComment] = useState('');
 
   const toggleTema = () => {
     setTema((prev) => (prev === "escuro" ? "claro" : "escuro"));
@@ -66,6 +69,39 @@ export default function Feed() {
     setPostText("");
     selectedFiles.forEach(file => URL.revokeObjectURL(file.url));
     setSelectedFiles([]);
+  };
+
+  // Abrir modal de comentários
+  const openCommentModal = (postId) => {
+    setCommentModal({ isOpen: true, postId });
+    setNewComment('');
+  };
+
+  // Fechar modal de comentários
+  const closeCommentModal = () => {
+    setCommentModal({ isOpen: false, postId: null });
+    setNewComment('');
+  };
+
+  // Adicionar comentário
+  const addComment = () => {
+    if (!newComment.trim()) return;
+    
+    const postId = commentModal.postId;
+    const comment = {
+      id: Date.now(),
+      text: newComment.trim(),
+      author: 'Lucas Alves',
+      avatar: Images.PhotoCard || "/default-avatar.jpg",
+      time: 'agora'
+    };
+    
+    setComments(prev => ({
+      ...prev,
+      [postId]: [...(prev[postId] || []), comment]
+    }));
+    
+    setNewComment('');
   };
 
   // Dados mock para os posts
@@ -164,209 +200,299 @@ export default function Feed() {
     </svg>
   );
 
-// Componente para navegação de mídia com suporte ao swipe
-const MediaGallery = ({ media, postId }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
-  
-  const nextMedia = () => {
-    setCurrentIndex((prev) => (prev + 1) % media.length);
-  };
-  
-  const prevMedia = () => {
-    setCurrentIndex((prev) => (prev - 1 + media.length) % media.length);
-  };
-  
-  // Funções para controle do swipe
-  const minSwipeDistance = 50;
-  
-  const handleTouchStart = (e) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-  
-  const handleTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-  
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
+  // Componente para navegação de mídia com suporte ao swipe
+  const MediaGallery = ({ media, postId }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [touchStart, setTouchStart] = useState(null);
+    const [touchEnd, setTouchEnd] = useState(null);
     
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
+    const nextMedia = () => {
+      setCurrentIndex((prev) => (prev + 1) % media.length);
+    };
     
-    if (isLeftSwipe && media.length > 1) {
-      nextMedia();
-    }
-    if (isRightSwipe && media.length > 1) {
-      prevMedia();
-    }
-  };
-  
-  const currentMedia = media[currentIndex];
-  
-  return (
-    <div 
-      className="postImageContainer"
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-    >
-      <div className="mediaWrapper" onClick={() => setLightboxImage({media, currentIndex})}>
-        {currentMedia.type === 'image' ? (
-          <img 
-            src={currentMedia.url} 
-            alt={currentMedia.alt} 
-            className="postImage"
-            draggable={false}
-          />
-        ) : (
-          <video 
-            src={currentMedia.url} 
-            className="postVideo" 
-            controls 
-            onClick={(e) => e.stopPropagation()}
-            onTouchStart={(e) => e.stopPropagation()}
-            onTouchMove={(e) => e.stopPropagation()}
-            onTouchEnd={(e) => e.stopPropagation()}
-          />
-        )}
-      </div>
+    const prevMedia = () => {
+      setCurrentIndex((prev) => (prev - 1 + media.length) % media.length);
+    };
+    
+    // Funções para controle do swipe
+    const minSwipeDistance = 50;
+    
+    const handleTouchStart = (e) => {
+      setTouchEnd(null);
+      setTouchStart(e.targetTouches[0].clientX);
+    };
+    
+    const handleTouchMove = (e) => {
+      setTouchEnd(e.targetTouches[0].clientX);
+    };
+    
+    const handleTouchEnd = () => {
+      if (!touchStart || !touchEnd) return;
       
-      {media.length > 1 && (
-        <>
-          <button className="mediaPrev" onClick={prevMedia}>
-            <ChevronLeftIcon />
-          </button>
-          <button className="mediaNext" onClick={nextMedia}>
-            <ChevronRightIcon />
-          </button>
-          <div className="mediaIndicators">
-            {media.map((_, index) => (
-              <div 
-                key={index} 
-                className={`mediaIndicator ${index === currentIndex ? 'active' : ''}`}
-                onClick={() => setCurrentIndex(index)}
-              />
-            ))}
-          </div>
-        </>
-      )}
+      const distance = touchStart - touchEnd;
+      const isLeftSwipe = distance > minSwipeDistance;
+      const isRightSwipe = distance < -minSwipeDistance;
       
-      <div className="postStatus">
-        <span className={`statusBadge ${posts.find(p => p.id === postId)?.status === "Vendido" ? "sold" : "development"}`}>
-          {posts.find(p => p.id === postId)?.status}
-        </span>
-      </div>
-    </div>
-  );
-};
-
-  // Componente Lightbox 
-  const Lightbox = () => {
-  // Sempre chame os hooks antes de qualquer return condicional
-  const [currentIndex, setCurrentIndex] = useState(lightboxImage?.currentIndex || 0);
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
-  
-  // Agora você pode fazer o return condicional
-  if (!lightboxImage) return null;
-  
-  const { media } = lightboxImage;
-  
-  const nextMedia = () => {
-    setCurrentIndex((prev) => (prev + 1) % media.length);
-  };
-  
-  const prevMedia = () => {
-    setCurrentIndex((prev) => (prev - 1 + media.length) % media.length);
-  };
-  
-  // Funções para controle do swipe
-  const minSwipeDistance = 50;
-  
-  const handleTouchStart = (e) => {
-    setTouchEnd(null); // reset touchEnd
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-  
-  const handleTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-  
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
+      if (isLeftSwipe && media.length > 1) {
+        nextMedia();
+      }
+      if (isRightSwipe && media.length > 1) {
+        prevMedia();
+      }
+    };
     
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
+    const currentMedia = media[currentIndex];
     
-    if (isLeftSwipe && media.length > 1) {
-      nextMedia();
-    }
-    if (isRightSwipe && media.length > 1) {
-      prevMedia();
-    }
-  };
-  
-  const currentMedia = media[currentIndex];
-  
-  return (
-    <div className="lightbox" onClick={() => setLightboxImage(null)}>
+    return (
       <div 
-        className="lightboxContent" 
-        onClick={(e) => e.stopPropagation()}
+        className="postImageContainer"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <button className="lightboxClose" onClick={() => setLightboxImage(null)}>
-          <CloseIcon />
-        </button>
-        
-        {currentMedia.type === 'image' ? (
-          <img 
-            src={currentMedia.url} 
-            alt={currentMedia.alt} 
-            className="lightboxImage"
-            draggable={false}
-          />
-        ) : (
-          <video 
-            src={currentMedia.url} 
-            className="lightboxVideo" 
-            controls 
-            onTouchStart={(e) => e.stopPropagation()}
-            onTouchMove={(e) => e.stopPropagation()}
-            onTouchEnd={(e) => e.stopPropagation()}
-          />
-        )}
+        <div className="mediaWrapper" onClick={() => setLightboxImage({media, currentIndex})}>
+          {currentMedia.type === 'image' ? (
+            <img 
+              src={currentMedia.url} 
+              alt={currentMedia.alt} 
+              className="postImage"
+              draggable={false}
+            />
+          ) : (
+            <video 
+              src={currentMedia.url} 
+              className="postVideo" 
+              controls 
+              onClick={(e) => e.stopPropagation()}
+              onTouchStart={(e) => e.stopPropagation()}
+              onTouchMove={(e) => e.stopPropagation()}
+              onTouchEnd={(e) => e.stopPropagation()}
+            />
+          )}
+        </div>
         
         {media.length > 1 && (
           <>
-            <button className="lightboxPrev" onClick={prevMedia}>
+            <button className="mediaPrev" onClick={prevMedia}>
               <ChevronLeftIcon />
             </button>
-            <button className="lightboxNext" onClick={nextMedia}>
+            <button className="mediaNext" onClick={nextMedia}>
               <ChevronRightIcon />
             </button>
-            <div className="lightboxIndicators">
+            <div className="mediaIndicators">
               {media.map((_, index) => (
                 <div 
                   key={index} 
-                  className={`lightboxIndicator ${index === currentIndex ? 'active' : ''}`}
+                  className={`mediaIndicator ${index === currentIndex ? 'active' : ''}`}
                   onClick={() => setCurrentIndex(index)}
                 />
               ))}
             </div>
           </>
         )}
+        
+        <div className="postStatus">
+          <span className={`statusBadge ${posts.find(p => p.id === postId)?.status === "Vendido" ? "sold" : "development"}`}>
+            {posts.find(p => p.id === postId)?.status}
+          </span>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
+
+  // Componente Lightbox 
+  const Lightbox = () => {
+    // Sempre chame os hooks antes de qualquer return condicional
+    const [currentIndex, setCurrentIndex] = useState(lightboxImage?.currentIndex || 0);
+    const [touchStart, setTouchStart] = useState(null);
+    const [touchEnd, setTouchEnd] = useState(null);
+    
+    // Agora você pode fazer o return condicional
+    if (!lightboxImage) return null;
+    
+    const { media } = lightboxImage;
+    
+    const nextMedia = () => {
+      setCurrentIndex((prev) => (prev + 1) % media.length);
+    };
+    
+    const prevMedia = () => {
+      setCurrentIndex((prev) => (prev - 1 + media.length) % media.length);
+    };
+    
+    // Funções para controle do swipe
+    const minSwipeDistance = 50;
+    
+    const handleTouchStart = (e) => {
+      setTouchEnd(null); // reset touchEnd
+      setTouchStart(e.targetTouches[0].clientX);
+    };
+    
+    const handleTouchMove = (e) => {
+      setTouchEnd(e.targetTouches[0].clientX);
+    };
+    
+    const handleTouchEnd = () => {
+      if (!touchStart || !touchEnd) return;
+      
+      const distance = touchStart - touchEnd;
+      const isLeftSwipe = distance > minSwipeDistance;
+      const isRightSwipe = distance < -minSwipeDistance;
+      
+      if (isLeftSwipe && media.length > 1) {
+        nextMedia();
+      }
+      if (isRightSwipe && media.length > 1) {
+        prevMedia();
+      }
+    };
+    
+    const currentMedia = media[currentIndex];
+    
+    return (
+      <div className="lightbox" onClick={() => setLightboxImage(null)}>
+        <div 
+          className="lightboxContent" 
+          onClick={(e) => e.stopPropagation()}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <button className="lightboxClose" onClick={() => setLightboxImage(null)}>
+            <CloseIcon />
+          </button>
+          
+          {currentMedia.type === 'image' ? (
+            <img 
+              src={currentMedia.url} 
+              alt={currentMedia.alt} 
+              className="lightboxImage"
+              draggable={false}
+            />
+          ) : (
+            <video 
+              src={currentMedia.url} 
+              className="lightboxVideo" 
+              controls 
+              onTouchStart={(e) => e.stopPropagation()}
+              onTouchMove={(e) => e.stopPropagation()}
+              onTouchEnd={(e) => e.stopPropagation()}
+            />
+          )}
+          
+          {media.length > 1 && (
+            <>
+              <button className="lightboxPrev" onClick={prevMedia}>
+                <ChevronLeftIcon />
+              </button>
+              <button className="lightboxNext" onClick={nextMedia}>
+                <ChevronRightIcon />
+              </button>
+              <div className="lightboxIndicators">
+                {media.map((_, index) => (
+                  <div 
+                    key={index} 
+                    className={`lightboxIndicator ${index === currentIndex ? 'active' : ''}`}
+                    onClick={() => setCurrentIndex(index)}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  // Componente Modal de Comentários
+  const CommentModal = () => {
+    if (!commentModal.isOpen) return null;
+    
+    const currentPost = posts.find(p => p.id === commentModal.postId);
+    const postComments = comments[commentModal.postId] || [];
+    
+    return (
+      <div className="commentModal" onClick={closeCommentModal}>
+        <div className="commentModalContent" onClick={(e) => e.stopPropagation()}>
+          <div className="commentModalHeader">
+            <h3>Comentários</h3>
+            <button className="commentModalClose" onClick={closeCommentModal}>
+              <CloseIcon />
+            </button>
+          </div>
+          
+          <div className="commentModalBody">
+            <div className="originalPost">
+              <div className="postHeader">
+                <div className="postUserAvatar">
+                  <img src={currentPost?.author.avatar} alt={currentPost?.author.name} />
+                  {currentPost?.author.isOnline && <div className="onlineStatus"></div>}
+                </div>
+                <div className="postUserInfo">
+                  <h4 className="postUserName">{currentPost?.author.name}</h4>
+                  <span className="postTime">{currentPost?.author.time}</span>
+                </div>
+              </div>
+              <p className="postText">{currentPost?.content}</p>
+            </div>
+            
+            <div className="commentsList">
+              {postComments.length === 0 ? (
+                <div className="noComments">
+                  <p>Seja o primeiro a comentar!</p>
+                </div>
+              ) : (
+                postComments.map((comment) => (
+                  <div key={comment.id} className="commentItem">
+                    <div className="commentAvatar">
+                      <img src={comment.avatar} alt={comment.author} />
+                    </div>
+                    <div className="commentContent">
+                      <div className="commentHeader">
+                        <h5 className="commentAuthor">{comment.author}</h5>
+                        <span className="commentTime">{comment.time}</span>
+                      </div>
+                      <p className="commentText">{comment.text}</p>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+            
+            <div className="addComment">
+              <div className="userAvatar">
+                <img src={Images.PhotoCard || "/default-avatar.jpg"} alt="Seu avatar" />
+              </div>
+              <div className="commentInputContainer">
+                <textarea
+                  value={newComment}
+                  onChange={(e) => setNewComment(e.target.value)}
+                  placeholder="Escreva um comentário..."
+                  className="commentInput"
+                  rows="1"
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                      e.preventDefault();
+                      addComment();
+                    }
+                  }}
+                />
+                <button 
+                  className="sendComment" 
+                  onClick={addComment}
+                  disabled={!newComment.trim()}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div id="Feed" className={tema === "escuro" ? "escuro-fundo-cinza" : "claro-fundo-bege"}>
@@ -491,11 +617,16 @@ const MediaGallery = ({ media, postId }) => {
               <MediaGallery media={post.media} postId={post.id} />
 
               <div className="postActions">
-                <button className="actionBtn like">
+                <button className={`actionBtn like ${post.isLiked ? 'liked' : ''}`}>
                   <HeartIcon />
+                  <span className="actionCount">{post.likes}</span>
                 </button>
-                <button className="actionBtn comment">
+                <button 
+                  className="actionBtn comment" 
+                  onClick={() => openCommentModal(post.id)}
+                >
                   <CommentIcon />
+                  <span className="actionCount">{(comments[post.id] || []).length || post.comments}</span>
                 </button>
                 <button className="actionBtn primary">
                   {post.status === "Vendido" ? "Comprar Agora" : "Contribuir"}
@@ -537,6 +668,7 @@ const MediaGallery = ({ media, postId }) => {
       </div>
 
       <Lightbox />
+      <CommentModal />
     </div>
   );
 }

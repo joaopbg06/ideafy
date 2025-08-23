@@ -99,29 +99,145 @@ export default function Sidebar({ tema, toggleTema, onSearchModal, activeItem = 
         break;
     }
   };
+  const mockPeople = [
+  {
+    id: 1,
+    name: "Maria Silva",
+    username: "@mariasilva",
+    avatar: Images.DeskCard || "/default-avatar.jpg",
+    profession: "Designer UX/UI",
+    isOnline: true
+  },
+  {
+    id: 2,
+    name: "João Santos", 
+    username: "@joaosantos",
+    avatar: Images.MobiCard || "/default-avatar.jpg",
+    profession: "Desenvolvedor Frontend",
+    isOnline: false
+  },
+  {
+    id: 3,
+    name: "Ana Costa",
+    username: "@anacosta", 
+    avatar: Images.Banner1 || "/default-avatar.jpg",
+    profession: "Product Manager",
+    isOnline: true
+  }
+];
+
+const mockPosts = [
+  {
+    id: 1,
+    author: {
+      name: "Lucas Alves",
+      avatar: Images.PhotoCard || "/default-avatar.jpg"
+    },
+    content: "React Components para interfaces modernas",
+    likes: 25,
+    comments: 8
+  },
+  {
+    id: 2,
+    author: {
+      name: "Samanta Neves", 
+      avatar: Images.Banner1 || "/default-avatar.jpg"
+    },
+    content: "Dicas de UI/UX Design para iniciantes",
+    likes: 42,
+    comments: 15
+  }
+];
 
   // Modal de Pesquisa
   const SearchModal = () => {
-    if (!showSearchModal) return null;
+  if (!showSearchModal) return null;
+  
+  // Filtrar pessoas com base na pesquisa
+  const filteredPeople = mockPeople.filter(person =>
+    person.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    person.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    person.profession.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // Filtrar posts com base na pesquisa
+  const filteredPosts = mockPosts.filter(post =>
+    post.content.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    post.author.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
     
     return (
-      <div className="searchModal" onClick={() => setShowSearchModal(false)}>
-        <div className="searchModalContent" onClick={(e) => e.stopPropagation()}>
-          <div className="searchModalHeader">
-            <h3>Pesquisar</h3>
-            <button className="searchModalClose" onClick={() => setShowSearchModal(false)}>
-              <CloseIcon />
-            </button>
-          </div>
-          <div className="searchModalBody">
-            <input
-              type="text"
-              placeholder="Digite para pesquisar..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="searchInput"
-              autoFocus
-            />
+    <div className="searchModal" onClick={() => setShowSearchModal(false)}>
+      <div className="searchModalContent" onClick={(e) => e.stopPropagation()}>
+        <div className="searchModalHeader">
+          <h3>Pesquisar</h3>
+          <button className="searchModalClose" onClick={() => setShowSearchModal(false)}>
+            <CloseIcon />
+          </button>
+        </div>
+        <div className="searchModalBody">
+          <input
+            type="text"
+            placeholder="Pesquisar pessoas e posts..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="searchInput"
+            autoFocus
+          />
+          
+          {searchQuery.length > 0 ? (
+            <div className="searchResults">
+              {/* Resultados de Pessoas */}
+              {filteredPeople.length > 0 && (
+                <div className="searchCategory">
+                  <h4>Pessoas</h4>
+                  {filteredPeople.map((person) => (
+                    <div key={person.id} className="searchPersonItem">
+                      <div className="searchPersonAvatar">
+                        <img src={person.avatar} alt={person.name} />
+                        {person.isOnline && <div className="searchOnlineStatus"></div>}
+                      </div>
+                      <div className="searchPersonInfo">
+                        <h5 className="searchPersonName">{person.name}</h5>
+                        <span className="searchPersonUsername">{person.username}</span>
+                        <span className="searchPersonProfession">{person.profession}</span>
+                      </div>
+                      <button className="searchFollowBtn">Seguir</button>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Resultados de Posts */}
+              {filteredPosts.length > 0 && (
+                <div className="searchCategory">
+                  <h4>Posts</h4>
+                  {filteredPosts.map((post) => (
+                    <div key={post.id} className="searchPostItem">
+                      <div className="searchPostAvatar">
+                        <img src={post.author.avatar} alt={post.author.name} />
+                      </div>
+                      <div className="searchPostInfo">
+                        <h5 className="searchPostAuthor">{post.author.name}</h5>
+                        <p className="searchPostContent">{post.content}</p>
+                        <div className="searchPostStats">
+                          <span>{post.likes} curtidas</span>
+                          <span>{post.comments} comentários</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Nenhum resultado encontrado */}
+              {filteredPeople.length === 0 && filteredPosts.length === 0 && (
+                <div className="noSearchResults">
+                  <p>Nenhum resultado encontrado para "{searchQuery}"</p>
+                </div>
+              )}
+            </div>
+          ) : (
             <div className="searchSuggestions">
               <div className="searchCategory">
                 <h4>Sugestões</h4>
@@ -139,11 +255,12 @@ export default function Sidebar({ tema, toggleTema, onSearchModal, activeItem = 
                 </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
-    );
-  };
+    </div>
+  );
+};
 
   return (
     <>
