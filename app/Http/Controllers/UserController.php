@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
 
-    public function index(int  $id)
+    public function index(int $id)
     {
         $user = UserModel::find($id);
 

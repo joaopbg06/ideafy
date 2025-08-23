@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string("media_path");
             $table->enum('media_type',['image','video']);
             $table->string("status")->default('active');
-            $table->foreignId('id_user')->constrained()->onDelete('cascade'); ;
+            $table->foreignId('id_user')->constrained()->onDelete('cascade'); 
+            
         });
     }
 

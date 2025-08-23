@@ -8,10 +8,10 @@ use App\Models\UserModel;
 class PostModel extends Model
 {
     protected $table = 'post';
-    protected $fillable = ['title','description','media_path','media_type','status'];
+    protected $fillable = ['title','description','media_path','media_type','status','id_user'];
 
     public function user()
     {
-        return $this->belongsTo(UserModel::class);
+        return $this->belongsTo(UserModel::class,'id_user');
     }
 }
