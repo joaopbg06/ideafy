@@ -512,36 +512,31 @@ export default function UserProfile({ userId = 1 }) {
       <main className="userProfile-mainContent">
         {/* Cover e Avatar - Banner atrás da foto */}
         <div className="userProfile-header">
-          <div className="userProfile-coverImageContainer">
-            <img src={userData.coverImage} alt="Cover" className="userProfile-coverImage" />
-            <div className="userProfile-coverOverlay"></div>
-            
-            {/* Avatar dentro do container do banner */}
-            <div className="userProfile-avatarContainer">
-              <img src={userData.avatar} alt={userData.name} className="userProfile-avatar" />
-              {userData.isOnline && <div className="userProfile-onlineStatus"></div>}
-            </div>
-          </div>
-          
-          <div className="userProfile-info">
-            <div className="userProfile-details">
-              <div className="userProfile-nameSection">
-                <h1 className="userProfile-name">
-                  {userData.name}
-                  {userData.verified && <VerifiedIcon />}
-                </h1>
-                <span className="userProfile-username">{userData.username}</span>
-              </div>
-              
-              <button 
-                className={`userProfile-followBtn ${isFollowingUser ? 'following' : ''}`}
-                onClick={toggleFollowUser}
-              >
-                {isFollowingUser ? 'Seguindo' : 'Seguir'}
-              </button>
-            </div>
-          </div>
-        </div>
+  {/* Avatar centralizado no topo */}
+  <div className="userProfile-avatarContainer">
+    <img src={userData.avatar} alt={userData.name} className="userProfile-avatar" />
+    {userData.isOnline && <div className="userProfile-onlineStatus"></div>}
+  </div>
+  
+  <div className="userProfile-info">
+    <div className="userProfile-details">
+      <div className="userProfile-nameSection">
+        <h1 className="userProfile-name">
+          {userData.name}
+          {userData.verified && <VerifiedIcon />}
+        </h1>
+        <span className="userProfile-username">{userData.username}</span>
+      </div>
+      
+      <button 
+        className={`userProfile-followBtn ${isFollowingUser ? 'following' : ''}`}
+        onClick={toggleFollowUser}
+      >
+        {isFollowingUser ? 'Seguindo' : 'Seguir'}
+      </button>
+    </div>
+  </div>
+</div>
 
         {/* Bio e informações */}
         <div className="userProfile-bio">
