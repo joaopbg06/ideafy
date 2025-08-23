@@ -392,7 +392,7 @@ export default function MinhaContaPage() {
         tema={tema}
         toggleTema={toggleTema}
         onSearchModal={() => setShowSearchModal(true)}
-        activeItem={'account'}
+        activeItem={'settings'}
         onNavigate={handleNavigation}
       />
       

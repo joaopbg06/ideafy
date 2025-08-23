@@ -90,7 +90,7 @@ export default function Sidebar({ tema, toggleTema, onSearchModal, activeItem = 
         navigate('/mensagens'); 
         break;
       case 'account':
-        navigate('/conta');
+        navigate('/perfil');
         break;
       case 'settings':
         navigate('/configuracoes'); 

@@ -504,7 +504,7 @@ export default function UserProfile({ userId = 1 }) {
       <Sidebar 
         tema={tema}
         toggleTema={toggleTema}
-        activeItem={activeNavItem}
+        activeItem={'account'}
         onNavigate={handleNavigation}
       />
 

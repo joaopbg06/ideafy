@@ -19,11 +19,10 @@ export default function AppRoutes() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/cadastro" element={<Register />} />
                     <Route path="/feed" element={<Feed />} />
-                    <Route path="/conta" element={<Conta />} />
                     <Route path="/perfil" element={<Perfil />} />
                     <Route path="/notificacoes" element={<Desenvolvimento />} />
                     <Route path="/mensagens" element={<Desenvolvimento />} />
-                    <Route path="/configuracoes" element={<Desenvolvimento />} />
+                    <Route path="/configuracoes" element={<Conta />} />
                     
                 </Routes>
             </div>
