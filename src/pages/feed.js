@@ -14,6 +14,8 @@ export default function Feed() {
   const [commentModal, setCommentModal] = useState({ isOpen: false, postId: null });
   const [comments, setComments] = useState({});
   const [newComment, setNewComment] = useState('');
+  const [followedUsers, setFollowedUsers] = useState(new Set());
+  const [likedPosts, setLikedPosts] = useState(new Set());
 
   const toggleTema = () => {
     setTema((prev) => (prev === "escuro" ? "claro" : "escuro"));
@@ -22,6 +24,31 @@ export default function Feed() {
   const handleNavigation = (item) => {
     setActiveNavItem(item);
     // Adicione sua lógica de navegação aqui
+  };
+
+  // Funções para toggle follow e like
+  const toggleFollow = (userId) => {
+    setFollowedUsers(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(userId)) {
+        newSet.delete(userId);
+      } else {
+        newSet.add(userId);
+      }
+      return newSet;
+    });
+  };
+
+  const toggleLike = (postId) => {
+    setLikedPosts(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(postId)) {
+        newSet.delete(postId);
+      } else {
+        newSet.add(postId);
+      }
+      return newSet;
+    });
   };
 
   // Auto-resize textarea
@@ -290,12 +317,6 @@ export default function Feed() {
             </div>
           </>
         )}
-        
-        <div className="postStatus">
-          <span className={`statusBadge ${posts.find(p => p.id === postId)?.status === "Vendido" ? "sold" : "development"}`}>
-            {posts.find(p => p.id === postId)?.status}
-          </span>
-        </div>
       </div>
     );
   };
@@ -432,6 +453,12 @@ export default function Feed() {
                   <h4 className="postUserName">{currentPost?.author.name}</h4>
                   <span className="postTime">{currentPost?.author.time}</span>
                 </div>
+                <button 
+                  className={`followBtn ${followedUsers.has(currentPost?.id) ? 'following' : ''}`}
+                  onClick={() => toggleFollow(currentPost?.id)}
+                >
+                  {followedUsers.has(currentPost?.id) ? 'Seguindo' : 'Seguir'}
+                </button>
               </div>
               <p className="postText">{currentPost?.content}</p>
             </div>
@@ -610,6 +637,12 @@ export default function Feed() {
                   <h4 className="postUserName">{post.author.name}</h4>
                   <span className="postTime">{post.author.time}</span>
                 </div>
+                <button 
+                  className={`followBtn ${followedUsers.has(post.id) ? 'following' : ''}`}
+                  onClick={() => toggleFollow(post.id)}
+                >
+                  {followedUsers.has(post.id) ? 'Seguindo' : 'Seguir'}
+                </button>
               </div>
 
               <p className="postText">{post.content}</p>
@@ -617,9 +650,14 @@ export default function Feed() {
               <MediaGallery media={post.media} postId={post.id} />
 
               <div className="postActions">
-                <button className={`actionBtn like ${post.isLiked ? 'liked' : ''}`}>
+                <button 
+                  className={`actionBtn like ${likedPosts.has(post.id) ? 'liked' : ''}`}
+                  onClick={() => toggleLike(post.id)}
+                >
                   <HeartIcon />
-                  <span className="actionCount">{post.likes}</span>
+                  <span className="actionCount">
+                    {post.likes + (likedPosts.has(post.id) ? 1 : 0)}
+                  </span>
                 </button>
                 <button 
                   className="actionBtn comment" 
@@ -628,12 +666,6 @@ export default function Feed() {
                   <CommentIcon />
                   <span className="actionCount">{(comments[post.id] || []).length || post.comments}</span>
                 </button>
-                <button className="actionBtn primary">
-                  {post.status === "Vendido" ? "Comprar Agora" : "Contribuir"}
-                </button>
-                {post.status !== "Vendido" && (
-                  <button className="actionBtn secondary">Contribuir</button>
-                )}
               </div>
             </article>
           ))}
