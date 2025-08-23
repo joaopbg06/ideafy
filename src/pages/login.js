@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Images from "../assets/images";
 import "../styles/login.css";
+import login from '../services/auth/auth'
+
 
 export default function Login() {
   const [tema, setTema] = useState("escuro");
@@ -10,15 +12,26 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
+ 
   const toggleIcon = () => {
     setTema((prev) => (prev === "escuro" ? "claro" : "escuro"));
   };
 
-  const handleSubmit = (e) => {
-    // e.preventDefault();
+
+ // consumo api
+  async function handleSubmit (e) {
+    e.preventDefault();
     // // Lógica de login aqui
-    // console.log("Login attempt:", { email, password });
-    navigate('/feed');
+   // console.log("Login attempt:", { email, password });
+    const token = await login(email,password);
+    if(token)
+    {
+      localStorage.setItem("token", token);
+      navigate('/feed');
+    }
+  
+
+   
   };
 
   const handleSocialLogin = (provider) => {

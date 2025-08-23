@@ -3,6 +3,7 @@ import Images from "../assets/images";
 import "../styles/feed.css";
 import Sidebar from "./componentes/sidebar";
 import MobileHeader from "./componentes/mobileHeader";
+import { useNavigate } from "react-router-dom";
 
 export default function Feed() {
   const [tema, setTema] = useState("escuro");
@@ -16,6 +17,18 @@ export default function Feed() {
   const [newComment, setNewComment] = useState('');
   const [followedUsers, setFollowedUsers] = useState(new Set());
   const [likedPosts, setLikedPosts] = useState(new Set());
+  const navigate = useNavigate();
+
+  useEffect(() => {
+   
+    
+    const token = localStorage.getItem("token"); 
+    console.log(token)
+    if (!token) {
+      navigate("/login"); 
+    }
+   
+  }, []); 
 
   const toggleTema = () => {
     setTema((prev) => (prev === "escuro" ? "claro" : "escuro"));
