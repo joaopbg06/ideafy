@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
 
-    public function index(int $id)
+    public function index()
     {
-        $user = UserModel::find($id);
+        $user = UserModel::all();
 
         if(!$user)
         {
@@ -59,6 +59,19 @@ class UserController extends Controller
         } 
 
         return response()->json("user not found");
+    }
+
+    public function show(string $username)
+    {
+
+        $user = UserModel::where('username',$username)->get();
+
+        if(!$user)
+        {
+            return response()->json("user not found");
+        }
+        
+        return response()->json($user);
     }
 
 

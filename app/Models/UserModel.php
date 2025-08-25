@@ -13,7 +13,7 @@ class UserModel  extends Authenticatable
     use HasApiTokens;
 
     protected $table = 'users';
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'password','username'];
 
     public function posts()
     {
