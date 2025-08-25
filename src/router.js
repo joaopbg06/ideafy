@@ -4,8 +4,8 @@ import Inicio from "./pages/inicio.js";
 import Login from "./pages/login.js";
 import Register from "./pages/register.js";
 import Feed from "./pages/feed.js";
+import Configuracoes from "./pages/configuracoes.js";
 import Conta from "./pages/conta.js";
-import Perfil from "./pages/perfil.js";
 import Desenvolvimento from "./pages/desenvolvimento.js";
 
 export default function AppRoutes() {
@@ -19,10 +19,10 @@ export default function AppRoutes() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/cadastro" element={<Register />} />
                     <Route path="/feed" element={<Feed />} />
-                    <Route path="/perfil" element={<Perfil />} />
+                    <Route path="/conta" element={<Conta />} />
                     <Route path="/notificacoes" element={<Desenvolvimento />} />
                     <Route path="/mensagens" element={<Desenvolvimento />} />
-                    <Route path="/configuracoes" element={<Conta />} />
+                    <Route path="/configuracoes" element={<Configuracoes />} />
                     
                 </Routes>
             </div>
